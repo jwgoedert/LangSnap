@@ -3,7 +3,7 @@
     <name>LangApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.99.1:8100" />
+    <content original-src="index.html" src="http://192.168.1.183:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-navigation href="http://172.24.3.0:8101" />
@@ -12,6 +12,8 @@
     <allow-navigation href="http://172.24.2.137:8101" />
     <allow-navigation href="http://192.168.1.148:8100" />
     <allow-navigation href="http://192.168.99.1:8100" />
+    <allow-navigation href="http://169.254.125.198:8100" />
+    <allow-navigation href="http://192.168.1.183:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -86,6 +88,10 @@
     <engine name="android" spec="^6.2.3" />
     <engine name="browser" spec="^4.1.0" />
     <engine name="ios" spec="^4.4.0" />
+    <plugin name="cordova-plugin-camera" spec="^2.4.1">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
+    </plugin>
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />

@@ -20,7 +20,22 @@
 		
 	</ion-content>
 
-	<button type="button" (click)="click()"><ion-icon name="camera"></ion-icon></button>
+<ion-content>	
+	<!--<button type="button" (click)="click()"><ion-icon name="camera"></ion-icon></button>-->
+ <button ion-button full style="background-color:green" (click)="takePhoto()"> 
+    <ion-icon name="camera"></ion-icon> &nbsp;&nbsp; Take Photo </button>
+    <ion-grid>
+      <ion-row>
+        <!--<ion-col col-6>-->
+        <ion-col col-6 *ngFor="let photo of photos; let id = index">
+          <ion-card class="block">
+            <ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
+            <!--<img src="https://ionicframework.com/dist/preview-app/www/assets/img/badu-live.png"/>-->
+            <img [src]="photo" *ngIf="photo" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 	<button type="button" (click)="click()"><ion-icon name="image"></ion-icon></button>
 	<button type="button" (click)="click()"><ion-icon name="search"></ion-icon></button>
 	

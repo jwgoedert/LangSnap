@@ -1,3 +1,14 @@
 page-create-deck {
-
+  .block{
+    position:relative;
+    .deleteIcon{
+      position: absolute !important;
+      margin-left: 85% !important;
+      margin-top: 5px !important;
+      color:white !important;
+    }
+    .deleteIcon:before{
+      font-size: 30px !important;
+    }
+  }
 }
