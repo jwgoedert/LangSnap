@@ -3,7 +3,7 @@
     <name>LangApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.1.183:8100" />
+    <content original-src="index.html" src="http://172.24.2.137:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-navigation href="http://172.24.3.0:8101" />
@@ -14,6 +14,7 @@
     <allow-navigation href="http://192.168.99.1:8100" />
     <allow-navigation href="http://169.254.125.198:8100" />
     <allow-navigation href="http://192.168.1.183:8100" />
+    <allow-navigation href="http://172.24.2.137:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -98,5 +99,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
+    <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
 </widget>

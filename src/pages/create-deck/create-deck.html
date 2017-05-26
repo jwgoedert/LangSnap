@@ -1,43 +1,64 @@
 <ion-header>
 	<ion-navbar>
-		 <button ion-button menuToggle>
+		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-    <ion-title>Create A Deck</ion-title>
+		<ion-title>Create A Deck</ion-title>
 	</ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-	
-	<ion-input placeholder="Deck Name"></ion-input>
-	<ion-content>
+	<!--< p *ngFor="let item of items">
+    {{item}}
+  < /p>-->
 
-		viewer goes here
-
-
-		card scroll menu goes here
-		
-	</ion-content>
-
-<ion-content>	
-	<!--<button type="button" (click)="click()"><ion-icon name="camera"></ion-icon></button>-->
- <button ion-button full style="background-color:green" (click)="takePhoto()"> 
-    <ion-icon name="camera"></ion-icon> &nbsp;&nbsp; Take Photo </button>
-    <ion-grid>
-      <ion-row>
-        <!--<ion-col col-6>-->
-        <ion-col col-6 *ngFor="let photo of photos; let id = index">
-          <ion-card class="block">
-            <ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
-            <!--<img src="https://ionicframework.com/dist/preview-app/www/assets/img/badu-live.png"/>-->
-            <img [src]="photo" *ngIf="photo" />
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-	<button type="button" (click)="click()"><ion-icon name="image"></ion-icon></button>
-	<button type="button" (click)="click()"><ion-icon name="search"></ion-icon></button>
-	
-	<button ion-button type="button" block>create deck</button>
+	<ion-col col-12 *ngFor="let item of items">
+		{{item}}
+	</ion-col>
+	<ion-input placeholder="Deck Name Upgrade 10.4">
+		<!--<ion-input placeholder="Deck Name" type="text" name="deckName" [(ngModel)]="deckName">-->
+	</ion-input>
+	<ion-content class="home">
+    <button ion-button full (click)="makeGetRequest()">GET Request</button>
+    <button ion-button full (click)="makePostRequest()">POST Request</button>
 </ion-content>
+	<ion-content *ngIf="!!base64Image">
+	<!--this is image my friends:{{base64Image}}-->
+</ion-content>
+<ion-content *ngIf="!!data">
+		this is Data my friends:{{data}}
+</ion-content>
+<!--<ion-content *ngIf="!!success">
+	this is Alright my friends:{{success}}
+</ion-content>-->
+	
+	<!--<p <button ion-button (click)="save(deck);">Save Deck Name</button>
+		<ion-content>
+			<ion-col col-12>
+				<ion-card class="block" id="viewerCreate">
+				</ion-card>
+			</ion-col>
+		</ion-content>-->
+
+	<ion-content>
+		<!--<button type="button" (click)="click()"><ion-icon name="camera"></ion-icon></button>-->
+		<button ion-button full style="background-color:green" (click)="takePhoto()"> 
+    <ion-icon name="camera"></ion-icon> &nbsp;&nbsp; Take Photo </button>
+		<ion-grid>
+			<ion-row>
+				<!--<ion-col col-6>-->
+				<ion-col col-6 *ngFor="let photo of photos; let id = index">
+					<ion-card class="block">
+						<ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
+						<!--<img src="https://ionicframework.com/dist/preview-app/www/assets/img/badu-live.png"/>-->
+						<img [src]="photo" *ngIf="photo" />
+						<!--<ion-title>{{"photo"}}</ion-title>-->
+					</ion-card>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<button type="button" (click)="click()"><ion-icon name="image"></ion-icon></button>
+		<button type="button" (click)="click()"><ion-icon name="search"></ion-icon></button>
+
+		<button ion-button type="button" block>create deck</button>
+	</ion-content>

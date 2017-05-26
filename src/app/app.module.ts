@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
-import { Camera } from '@ionic-native/camera'; 
-
+import { Camera } from '@ionic-native/camera';
+import { Storage } from '@ionic/storage';
+// import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular-4.x';
+// import { Cloudinary } from 'cloudinary-core';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreateDeckPage } from '../pages/create-deck/create-deck';
@@ -26,9 +28,10 @@ import { Config } from '../config';
   ],
   imports: [
     BrowserModule,
-		HttpModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
-    OAuthModule
+    OAuthModule,
+    // CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +46,10 @@ import { Config } from '../config';
     StatusBar,
     SplashScreen,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Storage,
+    // Cloudinary,
+    // provideCloudinary(require('cloudinary-core'), { cloud_name: 'dvlztondd' } as CloudinaryConfiguration),
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
