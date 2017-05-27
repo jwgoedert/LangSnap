@@ -15,22 +15,22 @@
 	<ion-col col-12 *ngFor="let item of items">
 		{{item}}
 	</ion-col>
-	<ion-input placeholder="Deck Name Upgrade 13.2">
+	<ion-input placeholder="Deck Name Upgrade 13.7">
 		<!--<ion-input placeholder="Deck Name" type="text" name="deckName" [(ngModel)]="deckName">-->
 	</ion-input>
 	<ion-content class="home">
     <button ion-button full (click)="makeGetRequest()">GET Request</button>
     <button ion-button full (click)="makePostRequest()">POST Request</button>
 </ion-content>
-	<ion-content *ngIf="!!base64Image">
-	<!--this is image my friends:{{base64Image}}-->
+	<ion-content *ngIf="!!picinfo">
+	this is image my friends:{{picinfo}}
 </ion-content>
 <ion-content *ngIf="!!data">
 		this is Data my friends:{{data}}
 </ion-content>
-<!--<ion-content *ngIf="!!success">
-	this is Alright my friends:{{success}}
-</ion-content>-->
+<ion-content *ngIf="!!test">
+	this is Alright my friends:{{test}}
+</ion-content>
 	
 	<!--<p <button ion-button (click)="save(deck);">Save Deck Name</button>
 		<ion-content>
