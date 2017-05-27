@@ -2,10 +2,8 @@ import { Component, ViewChild, Injectable } from '@angular/core';
 import { NavController, Nav, AlertController } from 'ionic-angular';//NavController
 import { HomePage } from '../home/home';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Storage } from '@ionic/storage';
-import { Http } from '@angular/http'
-// import { Page, Alert } from 'ionic/ionic';
-// import { Cloudinary } from 'cloudinary-core';
+import { Http } from '@angular/http';
+import { Config } from '../../config';
 @Injectable()
 @Component({
   selector: 'page-create-deck',
@@ -15,12 +13,9 @@ export class CreateDeckPage {
   @ViewChild(Nav) nav: Nav;
 
   public photos: any;
-  public photonames: any;
   public base64Image: string;
   public data: string;
   public test: any;
-  public picinfo: any;
-  public picJson: any;
 
   rootPage: any = HomePage;
 
@@ -28,99 +23,44 @@ export class CreateDeckPage {
     public navCtrl: NavController,
     private camera: Camera,
     private alertCtrl: AlertController,
-    private storage: Storage,
     private http: Http,
-    // private cloudinary: Cloudinary,
+    private config: Config,
   ) {
     this.http = http;
-
-    //  this.cloudinary = cloudinary;
   }
   ngOnInit() {
     this.photos = [];
   }
-  makeGetRequest() {
-    this.http.get("http://52.10.42.22")
-      .subscribe(data => {
-        console.log('DATA', data);
-        var alert = this.alertCtrl.create({
-          title: "Success is a hello!",
-          subTitle: JSON.stringify(data),
-          buttons: ["close"]
-        });
-        alert.present(alert);
-      }, error => {
-        console.log(JSON.stringify(error.json()));
-      });
-  }
 
-  makePostRequest() {
-    // this.http.post("https://httpbin.org/post", "firstname=Nic")
-
-    // this.http.post("http://localhost:3000/v2/", { "something": "something" })
-    // this.data = this.data || "something";
-    // this.http.post("http://6077fc18.ngrok.io/v2/", { "something": ` ${this.data}` })
-    //   .subscribe(data => {
-
-    //     var alert = this.alertCtrl.create({
-    //       title: "Data String",
-    //       subTitle: data.json().data,
-    //       buttons: ["close"]
-    //     });
-    //     alert.present(alert);
-    //   }, error => {
-    //     console.log(JSON.stringify(error.json()));
-    //   });
-  }
   takePhoto() {
     const options: CameraOptions = {
-      quality: 30,
-      targetWidth: 200,
-      targetHeight: 200,
-      correctOrientation: true,
+      quality: 50,
+      targetWidth: 300,
+      targetHeight: 300,
       destinationType: this.camera.DestinationType.DATA_URL,
-      // destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      saveToPhotoAlbum: true,
+      saveToPhotoAlbum: false,
     }
-    console.log("TOTOPHOTOs");
     this.camera.getPicture(options).then((imageData) => {
-      //add imageData to local storage
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:  
-      // imageData = imageData.replace(/\s/gi, '+');
+      // remove returns and format for cloudinary
       imageData = imageData.replace(/\r?\n|\r/g, "");
-
-
-
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
       var newForm = new FormData();
       newForm.append("file", this.base64Image);
-      newForm.append("upload_preset", "ugzxlhop");
+      newForm.append("upload_preset", this.config.cloudinary.uploadPreset);
       
-      console.log('What is this?', this.base64Image, 'STORAGE', this.storage);
-      this.picinfo = imageData;
-      // this.test = {
-      //   "file": "data:image/jpeg;base64,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", "upload_preset": "ugzxlhop"
-      // }
-      this.test = `{
-         "file": "data:image/jpeg;base64, ${imageData}", "upload_preset": "ugzxlhop"
-      }`;
-      this.test = JSON.parse(JSON.stringify(this.test));
-      // this.http.post("https://api.cloudinary.com/v1_1/dvlztondd/image/upload", this.test)
-      // this.http.post("https://api.cloudinary.com/v1_1/dvlztondd/image/upload", this.test)
-      this.http.post("https://api.cloudinary.com/v1_1/dvlztondd/image/upload", newForm)
-        // this.http.post("http://6077fc18.ngrok.io/v2/", this.test)
+      this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, newForm)
         .subscribe(info => {
-          this.data = JSON.stringify(info);
-          var alert = this.alertCtrl.create({
-            title: "Data String",
-            subTitle: JSON.stringify(info),
-            // subTitle: data.json().data,
-            buttons: ["close"]
-          });
-          alert.present(alert);
+          // alert for response
+          // var alert = this.alertCtrl.create({
+          //   title: "Data String",
+          //   subTitle: JSON.stringify(info),
+          //   buttons: ["close"]
+
+          // });
+          // alert.present(alert);
+          console.log(JSON.stringify(info));
         }, error => {
           var alertErr = this.alertCtrl.create({
             title: "ERROR",
@@ -128,19 +68,16 @@ export class CreateDeckPage {
             buttons: ["close"]
           });
           alertErr.present(alertErr);
-          // }
-          // console.log(JSON.stringify(error.json()));
         });
-
-
+      //put photos in grid for viewing  
       this.photos.push(this.base64Image);
       this.photos.reverse();
     }, (err) => {
       // Handle error
+      console.log(err);
     });
   }
   deletePhoto(index) {
-    // this.photos.splice(index, 1);
     let confirm = this.alertCtrl.create({
       title: 'Sure you want to delete this photo?',
       message: '',
