@@ -4,6 +4,10 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
+
+// import { Ng2CloudinaryModule } from './../ng2-cloudinary';
+// import { FileUploadModule } from 'ng2-file-upload';
+// import { Demo } from './demo.component';
 // import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular-4.x';
 // import { Cloudinary } from 'cloudinary-core';
 import { MyApp } from './app.component';
@@ -31,6 +35,8 @@ import { Config } from '../config';
     HttpModule,
     IonicModule.forRoot(MyApp),
     OAuthModule,
+    // Ng2CloudinaryModule,
+    // FileUploadModule,
     // CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
   ],
   bootstrap: [IonicApp],
