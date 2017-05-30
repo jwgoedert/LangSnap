@@ -11,9 +11,15 @@
 </ion-content>
 
 <ion-content padding>
+  <!--<form (click)="createDeckInDB(createDeckInDB.deckName)">
   <ion-item>
-    <ion-input type="text" placeholder={{picUrl}}></ion-input>
+    <ion-input type="text" name="createDeckInDB.deckName" placeholder="Please enter a deck name"></ion-input>
   </ion-item>
+  <button type="button" ion-button full outline>{{ 'CREATE_DECK' | translate }}</button>
+</form>-->
+  
+
+<!--<ion-content *ngIf="!!deckName">-->
   <ion-list>
     <ion-item>
       <ion-col col-12 *ngFor="let photo of photos; let id = index">
@@ -21,6 +27,8 @@
           <img [src]="photo" *ngIf="photo" />
         </ion-thumbnail>
         <h2>{{picUrl}}</h2>
+        <h2>{{object}}</h2>
+        <h2>{{objectUrl}}</h2>
         <p>ForeignWord</p>
         <button ion-button clear item-right>View</button>
       </ion-col>
@@ -64,3 +72,4 @@
   </ion-grid>
   <button ion-button full (click)="createDeck()" outline>{{ 'CREATE_DECK' | translate }}</button>
 </ion-footer>
+<!--</ion-content>-->

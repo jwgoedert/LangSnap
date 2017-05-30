@@ -7,21 +7,26 @@ import { Http } from '@angular/http';
 import { Config } from '../../config';
 import { OAuthService } from '../oauth/oauth.service';
 import { LanguageService } from '../../services/language.service';
+import { ImagesService } from '../../images.services.ts';
+// import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
-// @Injectable() ???
 @Component({
   selector: 'page-create-deck',
   templateUrl: 'create-deck.html',
 })
 export class CreateDeckPage {
   @ViewChild(Nav) nav: Nav;
-
   rootPage: any = CreateDeckPage;
 
   public photos: any;
   public base64Image: string;
-  public picUrl: string;
 	public profile: any;
+  public picUrl: any;
+  public deckName: string;
+  public object: any;
+  public objectUrl: string;
 
   constructor(
     public navCtrl: NavController,
@@ -45,6 +50,9 @@ export class CreateDeckPage {
   ngOnInit() {
     this.photos = [];
   }
+  createDeckInDB(name) {
+    this.deckName = name;
+  }
   takePhoto() {
     const options: CameraOptions = {
       quality: 100,
@@ -53,29 +61,42 @@ export class CreateDeckPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.CAMERA,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
     }
-    console.log("TOTOPHOTO");
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:  
       imageData = imageData.replace(/\r?\n|\r/g, "");
+      // this.base64Image = this.config.devMode ?  this.config.base64ImageData : 'data:image/jpeg;base64,' + imageData;
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
       var newForm = new FormData();
       newForm.append("file", this.base64Image);
       newForm.append("upload_preset", this.config.cloudinary.uploadPreset);
       this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, newForm)
         .subscribe(info => {
-          this.picUrl = info.url;
-          // alert for response
-          // var alert = this.alertCtrl.create({
-          //   title: "Data String",
-          //   subTitle: JSON.stringify(info),
-          //   buttons: ["close"]
-
-          // });
-          // alert.present(alert);
-          console.log(JSON.stringify(info));
+          this.picUrl = info.json();
+          // console.log(JSON.stringify(info));
+          this.picUrl = this.picUrl.url;
+          var alert1 = this.alertCtrl.create({
+            title: "Data Stringzy",
+            subTitle: JSON.stringify(this.picUrl),
+            buttons: ["close"]
+          });
+          alert1.present(alert1);
+          // var url = this.picUrl;
+          this.http.post(`http://bbbc568b.ngrok.io/v1/cloudinaryurltogoogle/`, { "url": this.picUrl })
+            .subscribe(info => {
+              console.log('INSIDE!!!!!!!!!!!!!!!!!!!!!!');
+              this.object = info.json();
+              console.log(JSON.stringify(this.object));
+            }, error => {
+              var alertErr = this.alertCtrl.create({
+                title: "ERROR1",
+                subTitle: JSON.stringify(this.object),
+                buttons: ["close"]
+              });
+              alertErr.present(alertErr);
+            });
+          this.photos.push(this.base64Image);
+          this.photos.reverse();
         }, error => {
           var alertErr = this.alertCtrl.create({
             title: "ERROR",
@@ -85,15 +106,17 @@ export class CreateDeckPage {
           alertErr.present(alertErr);
         });
       //put photos in grid for viewing  
-      this.photos.push(this.base64Image);
-      this.photos.reverse();
+      // this.objectUrl = JSON.stringify(url);
+      // var newForm1 = new FormData();
+      // newForm.append("url", JSON.stringify(url));
+
     }, (err) => {
       // Handle error
       console.log(err);
-    });
+    })
   }
+
   deletePhoto(index) {
-    // this.photos.splice(index, 1);
     let confirm = this.alertCtrl.create({
       title: 'Sure you want to delete this photo?',
       message: '',
@@ -114,8 +137,8 @@ export class CreateDeckPage {
     });
     confirm.present();
   }
-// not currently working, need to troubleshoot
-    cameraRoll() {
+
+  cameraRoll() {
     const options: CameraOptions = {
       quality: 100,
       targetWidth: 300,
@@ -125,41 +148,57 @@ export class CreateDeckPage {
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
     }
-    console.log("TOTOPHOTO");
-    this.camera.getPicture(options).then((imageData) => {
+    console.log("Inside Camera Roll");
+    this.camera.getPicture(options)
+      .then((imageData) => {
+        //get image data from camera roll
+        console.log('imageData', typeof imageData, imageData)
+        imageData = imageData.replace(/\r?\n|\r/g, "");
+        this.base64Image = 'data:image/jpeg;base64,' + imageData;
+        var newForm = new FormData();
+        newForm.append("file", this.base64Image);
+        newForm.append("upload_preset", this.config.cloudinary.uploadPreset);
+        console.log('newForm Data:', imageData, JSON.stringify(newForm));
 
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:  
-      imageData = imageData.replace(/\r?\n|\r/g, "");
-      this.base64Image = 'data:image/jpeg;base64,' + imageData;
-      var newForm = new FormData();
-      newForm.append("file", this.base64Image);
-      newForm.append("upload_preset", this.config.cloudinary.uploadPreset);
-      this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, newForm)
-        .subscribe(info => {
-          this.picUrl = info.url;
-        }, error => {
-          var alertErr = this.alertCtrl.create({
-            title: "ERROR",
-            subTitle: JSON.stringify(error.json().error),
-            buttons: ["close"]
-          });
-          alertErr.present(alertErr);
-        });
-      //put photos in grid for viewing  
-      this.photos.push(this.base64Image);
-      this.photos.reverse();
-    }, (err) => {
-      // Handle error
-      console.log(err);
-    });
+        this.photos.push(this.base64Image);
+        this.photos.reverse();
+        return newForm;
+      })
+      .then(imgFormatted => {
+        return this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, imgFormatted)
+          .map(info => {
+            this.picUrl = info.json().url;
+            console.log(this.picUrl);
+            return this.picUrl;
+          }).toPromise()
+      })
+      .then(url => {
+        console.log('BeforeGoogle:', url);
+        return this.http.post(`http://bbbc568b.ngrok.io/v1/cloudinaryurltogoogle/`, { "url": url})
+          .subscribe(res => {
+            console.log('Inside Post', res);
+            // this.object = res.json();
+            // console.log('RES', JSON.stringify(res));
+            // console.log('res from GOOGLE:', this.object);
+            // return this.object;
+        })
+      })
+      .catch(err => {
+        console.log('error from map:',JSON.stringify(err));
+      });
+
+
+    // .subscribe(res => console.log(JSON.stringify(res)));
+
+    // return info.json().url;
+    //put photos in grid for viewing  
+
   }
+
 
   findCard() {
 
   };
-
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateDeckPage');
@@ -173,4 +212,3 @@ export class CreateDeckPage {
     this.navCtrl.setRoot(MyDecksPage)
   }
 }
-
