@@ -44,3 +44,67 @@
     "nativeLang":"English",
     "learnLang":"French"
 }
+
+
+// add new decks  
+// /v1/decks/new
+{
+  "name":"XXXX",          //String
+  "user_id":XXXX,              //userId, Number
+  "stars":XXXX            //Number
+}
+
+{
+  "name":"testdeckj1",
+  "user_id": 3,
+  "stars": 0
+}
+
+{
+  "name":"testdeckz1",
+  "user_id": 5,
+  "stars": 0
+}
+
+{
+  "name":"testdeckn1",
+  "user_id": 4,
+  "stars": 0
+}
+
+// add new cards to deck
+// /v1/cards/addcard
+
+{
+	"user_id":4,
+	"stars":0,
+	"imgUrl":"http://res.cloudinary.com/dvlztondd/image/upload/v1495905857/onalwjugxlscy8h10p8z.jpg",
+	"wordMap":{"english":"laptop"},
+	"deck_id":5
+}
+
+{
+	"user_id":5,
+	"stars":0,
+	"imgUrl":"",
+	"wordMap":{"english":"chicken"},
+	"deck_id":5
+}
+
+{
+	"user_id":4,
+	"stars":0,
+	"imgUrl":"http???",
+	"wordMap":"{}",
+	"deck_id":2
+}
+
+{
+	"user_id":5,
+	"stars":0,
+	"imgUrl":"http???",
+	"wordMap":"{}",
+	"deck_id":2
+}
+
+

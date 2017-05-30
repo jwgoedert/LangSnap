@@ -11,18 +11,17 @@ import { CameraService } from '../../services/camera.service';
 import { CardPage } from '../card/card';
 import { DeckService } from '../../services/deck.service';
 
+
 @Component({
   selector: 'page-create-deck',
   templateUrl: 'create-deck.html',
 })
 export class CreateDeckPage {
   @ViewChild(Nav) nav: Nav;
-
   rootPage: any = CreateDeckPage;
 
   public photos: any;
   public base64Image: string;
-  public picUrl: string;
 	public profile: any;
   public fourN: any;
   public title: any;
@@ -55,6 +54,7 @@ export class CreateDeckPage {
   ngOnInit() {
     this.photos = [];
   }
+
   takePhoto() {
     const options: CameraOptions = {
       quality: 100,
@@ -64,13 +64,11 @@ export class CreateDeckPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.CAMERA,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
     }
-    console.log("TOTOPHOTO");
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:  
       imageData = imageData.replace(/\r?\n|\r/g, "");
+      // this.base64Image = this.config.devMode ?  this.config.base64ImageData : 'data:image/jpeg;base64,' + imageData;
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
       var newForm = new FormData();
       newForm.append("file", this.base64Image);
@@ -89,6 +87,7 @@ export class CreateDeckPage {
         }, 3000)
       })
   }
+
   deletePhoto(index) {
     let confirm = this.alertCtrl.create({
       title: 'Sure you want to delete this photo?',
@@ -155,7 +154,6 @@ export class CreateDeckPage {
         formError.present(formError);
       }
     }
-
     findCard() {
       // this.deckService.getUsersDecks(this.profile.id);
       // this.navCtrl.setRoot(CardPage);
