@@ -3,7 +3,7 @@ import { NavController, Nav, AlertController } from 'ionic-angular';
 import { MyDecksPage } from '../my-decks/my-decks';
 import { TranslateService } from '@ngx-translate/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers, Request, RequestMethod } from '@angular/http';
 import { Config } from '../../config';
 import { OAuthService } from '../oauth/oauth.service';
 import { LanguageService } from '../../services/language.service';
@@ -11,6 +11,7 @@ import { ImagesService } from '../../images.services.ts';
 // import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'page-create-deck',
@@ -20,13 +21,17 @@ export class CreateDeckPage {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = CreateDeckPage;
 
+  public googObj: any;
   public photos: any;
   public base64Image: string;
 	public profile: any;
   public picUrl: any;
   public deckName: string;
   public object: any;
-  public objectUrl: string;
+  public googleReq: any;
+  public data: any;
+  public posts: any;
+
 
   constructor(
     public navCtrl: NavController,
@@ -53,6 +58,22 @@ export class CreateDeckPage {
   createDeckInDB(name) {
     this.deckName = name;
   }
+  //  private serverUrl =  'http://79e820ac.ngrok.io';
+  // private serverUrl = 'https://httpbin.org/ip';
+  private serverUrl = `https://vision.googleapis.com/v1/images:annotate?key=${this.config.googleKey}`;
+
+  getGoogle(imgUrl) {
+    this.googleReq = {
+      "requests": [{
+        "image": { "source": { "imageUri": imgUrl } }, "features":
+        [{ "type": "LABEL_DETECTION", "maxResults": 1 }]
+      }]
+    }
+    this.http.post(this.serverUrl, this.googleReq).map(res => res.json()).subscribe(data => {
+      console.log(JSON.stringify(data.responses[0].labelAnnotations[0].description));
+      return JSON.stringify(data.responses[0].labelAnnotations[0].description);
+    })
+  }
   takePhoto() {
     const options: CameraOptions = {
       quality: 100,
@@ -70,50 +91,26 @@ export class CreateDeckPage {
       var newForm = new FormData();
       newForm.append("file", this.base64Image);
       newForm.append("upload_preset", this.config.cloudinary.uploadPreset);
-      this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, newForm)
-        .subscribe(info => {
-          this.picUrl = info.json();
-          // console.log(JSON.stringify(info));
-          this.picUrl = this.picUrl.url;
-          var alert1 = this.alertCtrl.create({
-            title: "Data Stringzy",
-            subTitle: JSON.stringify(this.picUrl),
-            buttons: ["close"]
-          });
-          alert1.present(alert1);
-          // var url = this.picUrl;
-          this.http.post(`http://bbbc568b.ngrok.io/v1/cloudinaryurltogoogle/`, { "url": this.picUrl })
-            .subscribe(info => {
-              console.log('INSIDE!!!!!!!!!!!!!!!!!!!!!!');
-              this.object = info.json();
-              console.log(JSON.stringify(this.object));
-            }, error => {
-              var alertErr = this.alertCtrl.create({
-                title: "ERROR1",
-                subTitle: JSON.stringify(this.object),
-                buttons: ["close"]
-              });
-              alertErr.present(alertErr);
-            });
-          this.photos.push(this.base64Image);
-          this.photos.reverse();
-        }, error => {
-          var alertErr = this.alertCtrl.create({
-            title: "ERROR",
-            subTitle: JSON.stringify(error.json().error),
-            buttons: ["close"]
-          });
-          alertErr.present(alertErr);
-        });
-      //put photos in grid for viewing  
-      // this.objectUrl = JSON.stringify(url);
-      // var newForm1 = new FormData();
-      // newForm.append("url", JSON.stringify(url));
 
-    }, (err) => {
-      // Handle error
-      console.log(err);
+      return newForm;
     })
+      .then(imgFormatted => {
+        return this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, imgFormatted)
+          .map(info => {
+            this.picUrl = info.json().url;
+            console.log(this.picUrl);
+            return this.picUrl;
+          }).toPromise()
+      })
+      .then(url => {
+        this.getGoogle(url)
+      })
+      .catch(err => {
+        console.log('error from map:', JSON.stringify(err));
+      });
+    this.photos.push(this.base64Image);
+    this.photos.reverse();
+
   }
 
   deletePhoto(index) {
@@ -173,25 +170,11 @@ export class CreateDeckPage {
           }).toPromise()
       })
       .then(url => {
-        console.log('BeforeGoogle:', url);
-        return this.http.post(`http://bbbc568b.ngrok.io/v1/cloudinaryurltogoogle/`, { "url": url})
-          .subscribe(res => {
-            console.log('Inside Post', res);
-            // this.object = res.json();
-            // console.log('RES', JSON.stringify(res));
-            // console.log('res from GOOGLE:', this.object);
-            // return this.object;
-        })
+        this.getGoogle(url)
       })
       .catch(err => {
-        console.log('error from map:',JSON.stringify(err));
+        console.log('error from map:', JSON.stringify(err));
       });
-
-
-    // .subscribe(res => console.log(JSON.stringify(res)));
-
-    // return info.json().url;
-    //put photos in grid for viewing  
 
   }
 
@@ -211,4 +194,5 @@ export class CreateDeckPage {
   createDeck() {
     this.navCtrl.setRoot(MyDecksPage)
   }
+
 }
