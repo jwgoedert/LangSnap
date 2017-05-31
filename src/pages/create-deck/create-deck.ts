@@ -3,14 +3,13 @@ import { NavController, Nav, AlertController } from 'ionic-angular';
 import { MyDecksPage } from '../my-decks/my-decks';
 import { TranslateService } from '@ngx-translate/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers, Request, RequestMethod } from '@angular/http';
 import { Config } from '../../config';
 import { OAuthService } from '../oauth/oauth.service';
 import { LanguageService } from '../../services/language.service';
 import { CameraService } from '../../services/camera.service';
 import { CardPage } from '../card/card';
 import { DeckService } from '../../services/deck.service';
-
 
 @Component({
   selector: 'page-create-deck',
@@ -20,6 +19,7 @@ export class CreateDeckPage {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = CreateDeckPage;
 
+  public googObj: any;
   public photos: any;
   public base64Image: string;
 	public profile: any;
@@ -28,6 +28,7 @@ export class CreateDeckPage {
   public translatedWord;
   public counter: number = 0;
   public deckId;
+
 
   constructor(
     public navCtrl: NavController,
@@ -86,6 +87,7 @@ export class CreateDeckPage {
           this.photos[this.counter]['word'] = this.fourN;
         }, 3000)
       })
+
   }
 
   deletePhoto(index) {
@@ -157,6 +159,8 @@ export class CreateDeckPage {
     findCard() {
       // this.deckService.getUsersDecks(this.profile.id);
       // this.navCtrl.setRoot(CardPage);
+      // this.deckService.getUsersDecks(1);
+      this.navCtrl.setRoot(CardPage);
     };
 
     addATitle(title) {
@@ -191,3 +195,4 @@ export class CreateDeckPage {
       this.counter = this.photos.length - 1;
     }
 }
+
