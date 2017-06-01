@@ -19,6 +19,7 @@ export class CreateDeckPage {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = CreateDeckPage;
 
+  public deckname: string;
   public googObj: any;
   public photos: any;
   public base64Image: string;
@@ -28,7 +29,6 @@ export class CreateDeckPage {
   public translatedWord;
   public counter: number = 0;
   public deckId;
-
 
   constructor(
     public navCtrl: NavController,
@@ -144,6 +144,7 @@ export class CreateDeckPage {
       })
     }
 
+
     checkTitle() {
       if (this.title) {
         this.navCtrl.setRoot(CardPage)
@@ -159,7 +160,6 @@ export class CreateDeckPage {
     findCard() {
       // this.deckService.getUsersDecks(1);
       this.navCtrl.setRoot(CardPage);
-
     };
 
     addATitle(title) {
@@ -169,7 +169,6 @@ export class CreateDeckPage {
       this.cameraService.addTitle(this.title) 
       this.deckId = this.deckService.postUserDeck(this.title, this.profile.id)
     }
-
     ionViewDidLoad() {
       console.log('ionViewDidLoad CreateDeckPage');
     }
