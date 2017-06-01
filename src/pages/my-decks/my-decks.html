@@ -6,8 +6,29 @@
     <ion-title>{{ 'MY_DECKS' | translate }} </ion-title>
 	</ion-navbar>
 </ion-header>
+<ion-content class="card-background-page">
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <button (click)="openCard()">
+        <img [src]="item.cards[0].imgUrl"/>
+          <div class="card-title">{{item.name}}</div>
+          <div class="card-subtitle">{{item.stars}}Stars!</div>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>
 
-<ion-content padding>
+
+
+
+<!--<ion-content padding>
 	<button ion-button type="button" (click)="editDeck()" block> {{ 'EDIT_DECK' | translate }} </button>
 	<button ion-button type="button" (click)="deleteDeck()" block>{{ 'DELETE_DECK' | translate }}</button>
-</ion-content>
+</ion-content>-->
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>

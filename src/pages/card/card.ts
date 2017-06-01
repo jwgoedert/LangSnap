@@ -6,6 +6,12 @@ import { LanguageService } from '../../services/language.service';
 import { DeckService } from '../../services/deck.service';
 import { OAuthService } from '../oauth/oauth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Http, RequestOptions, Headers, Request, RequestMethod } from '@angular/http';
+import { Config } from '../../config';
+// import { TranslateService } from '@ngx-translate/core';
+// import { LanguageService } from '../../services/language.service';
+  
+
 
 @Component({
   selector: 'page-card',
@@ -13,13 +19,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CardPage {
   public title: string;
-  public cardInfo: any;
   public translation: any;
   public profile: any;
   public show: boolean = false;
+  public cardInfo: any;
   public rootPage: any = CardPage;
   
   constructor(public navCtrl: NavController, 
+    public http: Http,
     public navParams: NavParams, 
     public cameraService: CameraService,
     private oauthService: OAuthService,
@@ -62,7 +69,9 @@ export class CardPage {
 
   editWord(word){
     this.show = true;
+
   }
+
   createCard() {
      let addCard = {
       "user_id": this.profile.id,

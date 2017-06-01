@@ -1,13 +1,27 @@
 <ion-header>
-	<ion-navbar>
-		 <button ion-button menuToggle>
+  <ion-navbar>
+    <button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
     <ion-title>{{ 'FIND_ADD' | translate }}</ion-title>
-	</ion-navbar>
+  </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-	
-	<button ion-button type="button" (click)="addDeck()" block>{{ "ADD_DECK" | translate }}</button>
+<ion-content class="card-background-page">
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <button (click)="openCard()">
+        <img [src]="item.cards[0].imgUrl"/>
+          <div class="card-title">{{item.name}}</div>
+          <div class="card-subtitle">{{item.stars}}Stars!</div>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button type="button" (click)="addDeck()" block>{{ "ADD_DECK" | translate }}</button>
+  </ion-toolbar>-->
+</ion-footer>

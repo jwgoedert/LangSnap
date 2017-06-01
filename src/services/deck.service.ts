@@ -10,7 +10,7 @@ export class DeckService {
   public usersDecks: any;
   public allDecks: any;
   public deckId: any;
-  
+
   constructor(
     public http: Http,
     public alertCtrl: AlertController,
@@ -81,6 +81,7 @@ export class DeckService {
   }
 
   deleteDecks(decks) {
+
   }
   //find/add decks page
   getAllDecks() {
@@ -102,4 +103,5 @@ export class DeckService {
   }
   addCards(cards) {
   }
+
 }

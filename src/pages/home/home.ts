@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { OAuthService } from '../oauth/oauth.service';
 import { ProfileService } from '../../services/profile.service';
 import { LanguageService } from '../../services/language.service';
+import { DeckService } from '../../services/deck.service';
 import { OAuthProvidersListPage } from '../oauth/list/oauth-providers.list.page';
 
 import { CreateDeckPage } from '../create-deck/create-deck';
@@ -35,7 +36,8 @@ export class HomePage {
     public http: Http,
     public profileService: ProfileService,
     public alertCtrl: AlertController,
-    public languageService: LanguageService) {
+    public languageService: LanguageService,
+    public deckService: DeckService) {
       this.alertCtrl = alertCtrl;
       this.oauthService = oauthService;
       this.chooseALang = [
@@ -49,21 +51,21 @@ export class HomePage {
       // if (localStorage.getItem('oauthToken') === null) {
       //   this.navCtrl.setRoot(OAuthProvidersListPage);
       // }
-      console.log('update 1.9')
-      oauthService.getProfile().toPromise()
-        .then(profile => {
-          console.log(profile, 'profile')
-          this.profile = profile;
-          this.user = JSON.stringify(profile);
-          // this sends you to the profile page if you don't have languages set up
-          if(this.profile.id === -1) {
-            this.navCtrl.setRoot(ProfilePage)
-          }
-          translateService.use(languageService.translateLang(this.profile.nativeLang));
-        })
-        .catch(err => {
-          console.log("Error" + JSON.stringify(err))
-        }); 
+      console.log('update 1.8')
+      // oauthService.getProfile().toPromise()
+      //   .then(profile => {
+      //     console.log(profile, 'profile')
+      //     this.profile = profile;
+      //     this.user = JSON.stringify(profile);
+      //     // this sends you to the profile page if you don't have languages set up
+      //     // if(this.profile.id === -1) {
+      //     //   this.navCtrl.setRoot(ProfilePage)
+      //     // }
+        //   translateService.use(languageService.translateLang(this.profile.nativeLang));
+        // })
+        // .catch(err => {
+        //   console.log("Error" + JSON.stringify(err))
+        // }); 
 	}
 
   langForm(email, native, learning) {
@@ -93,9 +95,11 @@ export class HomePage {
     this.navCtrl.setRoot(CreateDeckPage);
   }
   findAddPage(){
+    this.deckService.getAllDecks();
     this.navCtrl.setRoot(FindAddDeckPage);
   }
   myDecksPage(){
+    this.deckService.getUsersDecks(1);
     this.navCtrl.setRoot(MyDecksPage);
   }
   logout(){
