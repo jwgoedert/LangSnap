@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { Config } from '../config';
-​
+
 @Injectable()
 export class CameraService {
  translationUpdate: EventEmitter<string> = new EventEmitter();
@@ -77,22 +77,23 @@ export class CameraService {
   () => {
    this.returnWord(this.word)
   });
+
   }
-​
+
   returnWord(word) {
-  console.log(word)
-  console.log(Date())
-  return word;
+    console.log(word)
+    console.log(Date())
+    return word;
   }
-​
+
   getWord() {
-   return this.word;
+    return this.word;
   }
-​
+
   getPic() {
-  // use this.url to get picture from cloudinary
+    // use this.url to get picture from cloudinary
   }
-​
+
   getTranslation(str) {
    console.log('in translation')
    console.log(this.getWord())
@@ -128,24 +129,26 @@ export class CameraService {
     console.log('translation yea yea')
     return this.translation;
    })
+
   }
-​
+
   addTitle(title) {
-  this.title = title;
+    this.title = title;
   }
-​   getTranslatedWord() {
+  getTranslatedWord() {
     return this.translation;
   }
   languages(source, target) {
-  this.source = source;
-  this.target = target;
+    this.source = source;
+    this.target = target;
   }
-  getCardInfo(){
-   return {
-    title: this.title,
-    picture: this.picUrl,
-    word: this.word,
-    translation: this.translation 
-   }
+  getCardInfo() {
+    return {
+      title: this.title,
+      picture: this.picUrl,
+      word: this.word,
+      translation: this.translation
+
+    }
   }
 }

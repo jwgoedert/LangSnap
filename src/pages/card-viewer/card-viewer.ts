@@ -5,6 +5,7 @@ import { LanguageService } from '../../services/language.service';
 import { OAuthService } from '../oauth/oauth.service';
 import { DeckService } from '../../services/deck.service';
 
+
 @Component({
   selector: 'page-card-viewer',
   templateUrl: 'card-viewer.html',
@@ -33,5 +34,4 @@ export class CardViewerPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CardViewerPage');
   }
-
 }

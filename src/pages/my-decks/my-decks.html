@@ -11,6 +11,7 @@
   <ion-list>
     <ion-item *ngFor="let item of items">
       <button (click)="openCard(item.id)">
+
         <img [src]="item.cards[0].imgUrl"/>
           <div class="card-title">{{item.name}}</div>
           <div class="card-subtitle">{{item.stars}}Stars!</div>
@@ -18,3 +19,12 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+
+
+
+<!--<ion-content padding>
+	<button ion-button type="button" (click)="editDeck()" block> {{ 'EDIT_DECK' | translate }} </button>
+	<button ion-button type="button" (click)="deleteDeck()" block>{{ 'DELETE_DECK' | translate }}</button>
+</ion-content>-->
+

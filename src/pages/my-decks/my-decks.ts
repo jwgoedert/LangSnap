@@ -56,6 +56,7 @@ export class MyDecksPage {
   //     })
   //   }
   // }
+
   ///////////////
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyDecksPage');
@@ -70,6 +71,7 @@ export class MyDecksPage {
     console.log('edit deck button was clicked!')
     this.navCtrl.setRoot(EditDeckPage)
   }
+
   deleteDeck() {
     console.log('delete deck button was clicked!')
   }

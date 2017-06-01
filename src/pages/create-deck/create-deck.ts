@@ -8,8 +8,8 @@ import { Config } from '../../config';
 import { OAuthService } from '../oauth/oauth.service';
 import { LanguageService } from '../../services/language.service';
 import { CameraService } from '../../services/camera.service';
-import { CardPage } from '../card/card';
 import { DeckService } from '../../services/deck.service';
+import { CardPage } from '../card/card';
 
 @Component({
   selector: 'page-create-deck',
@@ -23,7 +23,7 @@ export class CreateDeckPage {
   public googObj: any;
   public photos: any;
   public base64Image: string;
-	public profile: any;
+  public profile: any;
   public fourN: any;
   public title: any;
   public translatedWord;
@@ -87,6 +87,7 @@ export class CreateDeckPage {
           this.photos[this.counter]['word'] = this.fourN;
         }, 3000)
       })
+
 
   }
 
@@ -156,7 +157,8 @@ export class CreateDeckPage {
         });
         formError.present(formError);
       }
-    }
+  }
+    
     findCard() {
       // this.deckService.getUsersDecks(this.profile.id);
       // this.navCtrl.setRoot(CardPage);
@@ -164,20 +166,22 @@ export class CreateDeckPage {
       this.navCtrl.setRoot(CardPage);
     };
 
-    addATitle(title) {
-      this.title = title;
-      console.log(this.title)
-      console.log('title')
-      this.cameraService.addTitle(this.title) 
-      this.deckId = this.deckService.postUserDeck(this.title, this.profile.id)
-    }
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad CreateDeckPage');
-    }
+ 
 
-    click() {
-      console.log('they gone think i won a grammy!!!!!!')
-    }
+
+  addATitle(title) {
+    this.title = title;
+    console.log(this.title)
+    console.log('title')
+    this.cameraService.addTitle(this.title)
+  }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CreateDeckPage');
+  }
+
+  click() {
+    console.log('they gone think i won a grammy!!!!!!')
+  }
 
     createDeck() {
       // this.deckService.postUserDeck(this.title, this.profile.id)
@@ -194,5 +198,6 @@ export class CreateDeckPage {
       this.photos[this.counter]['translation'] = this.translatedWord;
       this.counter = this.photos.length - 1;
     }
+
 }
 

@@ -28,6 +28,7 @@ export class FindAddDeckPage {
         .catch(err => {
           console.log("Error" + JSON.stringify(err))
         }); 
+
      this.initializeItems();
   }
   //   ngOnInit() {
