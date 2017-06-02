@@ -12,7 +12,6 @@ export class DeckService {
   public deckId: any;
   public currentDeck: Array<any> = [];
 
-
   constructor(
     public http: Http,
     public alertCtrl: AlertController,
@@ -100,7 +99,6 @@ export class DeckService {
     return this.currentDeck;
   }
   deleteDecks(decks) {
-
   }
   //find/add decks page
   getAllDecks() {
@@ -122,5 +120,4 @@ export class DeckService {
   }
   addCards(cards) {
   }
-
 }

@@ -53,20 +53,20 @@ export class HomePage {
       //   this.navCtrl.setRoot(OAuthProvidersListPage);
       // }
       console.log('update 1.8')
-      // oauthService.getProfile().toPromise()
-      //   .then(profile => {
-      //     console.log(profile, 'profile')
-      //     this.profile = profile;
-      //     this.user = JSON.stringify(profile);
-      //     // this sends you to the profile page if you don't have languages set up
-      //     // if(this.profile.id === -1) {
-      //     //   this.navCtrl.setRoot(ProfilePage)
-      //     // }
-        //   translateService.use(languageService.translateLang(this.profile.nativeLang));
-        // })
-        // .catch(err => {
-        //   console.log("Error" + JSON.stringify(err))
-        // }); 
+      oauthService.getProfile().toPromise()
+        .then(profile => {
+          console.log(profile, 'profile')
+          this.profile = profile;
+          this.user = JSON.stringify(profile);
+          // this sends you to the profile page if you don't have languages set up
+          if(this.profile.id === -1) {
+            this.navCtrl.setRoot(ProfilePage)
+          }
+          translateService.use(languageService.translateLang(this.profile.nativeLang));
+        })
+        .catch(err => {
+          console.log("Error" + JSON.stringify(err))
+        }); 
 	}
 
   langForm(email, native, learning) {

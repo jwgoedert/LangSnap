@@ -38,6 +38,7 @@ export class MyDecksPage {
         return deck;
       })
     }, 1500)
+
   }
   
   // initializeItems() {
