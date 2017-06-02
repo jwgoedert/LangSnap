@@ -1,16 +1,17 @@
+
+
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav, AlertController } from 'ionic-angular';
 import { MyDecksPage } from '../my-decks/my-decks';
 import { TranslateService } from '@ngx-translate/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Http, RequestOptions, Headers, Request, RequestMethod } from '@angular/http';
+import { Http } from '@angular/http';
 import { Config } from '../../config';
 import { OAuthService } from '../oauth/oauth.service';
 import { LanguageService } from '../../services/language.service';
 import { CameraService } from '../../services/camera.service';
-import { DeckService } from '../../services/deck.service';
 import { CardPage } from '../card/card';
-
+import { DeckService } from '../../services/deck.service';
 @Component({
   selector: 'page-create-deck',
   templateUrl: 'create-deck.html',
@@ -18,12 +19,10 @@ import { CardPage } from '../card/card';
 export class CreateDeckPage {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = CreateDeckPage;
-
-  public deckname: string;
-  public googObj: any;
   public photos: any;
   public base64Image: string;
-  public profile: any;
+  public picUrl: string;
+    public profile: any;
   public fourN: any;
   public title: any;
   public translatedWord;
@@ -51,11 +50,11 @@ export class CreateDeckPage {
           console.log("Error" + JSON.stringify(err))
         }); 
     this.http = http;
+
   }
   ngOnInit() {
     this.photos = [];
   }
-
   takePhoto() {
     const options: CameraOptions = {
       quality: 100,
@@ -65,11 +64,13 @@ export class CreateDeckPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      sourceType: this.camera.PictureSourceType.CAMERA,
     }
+    console.log("TOTOPHOTO");
     this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:  
       imageData = imageData.replace(/\r?\n|\r/g, "");
-      // this.base64Image = this.config.devMode ?  this.config.base64ImageData : 'data:image/jpeg;base64,' + imageData;
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
       var newForm = new FormData();
       newForm.append("file", this.base64Image);
@@ -87,10 +88,7 @@ export class CreateDeckPage {
           this.photos[this.counter]['word'] = this.fourN;
         }, 3000)
       })
-
-
   }
-
   deletePhoto(index) {
     let confirm = this.alertCtrl.create({
       title: 'Sure you want to delete this photo?',
@@ -99,7 +97,6 @@ export class CreateDeckPage {
         {
           text: 'No',
           handler: () => {
-
           }
         },
         {
@@ -112,7 +109,6 @@ export class CreateDeckPage {
     });
     confirm.present();
   }
-
     cameraRoll() {
       const options: CameraOptions = {
         quality: 100,
@@ -131,6 +127,7 @@ export class CreateDeckPage {
         var newForm = new FormData();
         newForm.append("file", this.base64Image);
         newForm.append("upload_preset", this.config.cloudinary.uploadPreset);
+
         this.photos.push({ image: this.base64Image});
         this.photos.reverse();
         return newForm;
@@ -144,8 +141,6 @@ export class CreateDeckPage {
           }, 3000)
       })
     }
-
-
     checkTitle() {
       if (this.title) {
         this.navCtrl.setRoot(CardPage)
@@ -157,6 +152,7 @@ export class CreateDeckPage {
         });
         formError.present(formError);
       }
+
   }
     
     findCard() {
@@ -166,25 +162,21 @@ export class CreateDeckPage {
       this.navCtrl.setRoot(CardPage);
     };
 
- 
-
-
-  addATitle(title) {
-    this.title = title;
-    console.log(this.title)
-    console.log('title')
-    this.cameraService.addTitle(this.title)
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateDeckPage');
-  }
-
-  click() {
-    console.log('they gone think i won a grammy!!!!!!')
-  }
-
+    addATitle(title) {
+      this.title = title;
+      console.log(this.title)
+      console.log('title')
+      this.cameraService.addTitle(this.title) 
+      this.deckId = this.deckService.postUserDeck(this.title, this.profile.id)
+    }
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad CreateDeckPage');
+    }
+    click() {
+      console.log('they gone think i won a grammy!!!!!!')
+    }
     createDeck() {
-      // this.deckService.postUserDeck(this.title, this.profile.id)
+      this.deckService.postUserDeck(this.title, this.profile.id)
       // this.navCtrl.setRoot(MyDecksPage)
     }
     translate(){
@@ -198,6 +190,4 @@ export class CreateDeckPage {
       this.photos[this.counter]['translation'] = this.translatedWord;
       this.counter = this.photos.length - 1;
     }
-
 }
-
