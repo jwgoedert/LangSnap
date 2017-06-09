@@ -3,8 +3,15 @@ page-card-viewer {
     background: #fff;
     border-color: transparent;
   }
-  img {
-    align-items: center;
+.trans-word{
+font-size:1.3em;
+color:teal;
+}
+h3{
+  color:white;
+}
+  .ion-toolbar{
+    height:28px;
   }
   .slide-zoom {
     height: 100%;
@@ -13,27 +20,47 @@ page-card-viewer {
     height: 30px;
   }
   .slide-title {
-    margin-top: 2.8rem;
+    font-size: 1.2em;
+    margin-top: 2.5rem;
+    color: white;
+  }
+  .deck-language {
+    font-size: 1em;
+    color: white;
   }
 
   .slide-image {
-    max-height: 50%;
-    max-width: 60%;
-    margin: 18px 0;
+    height:50%;
+    // max-height: 50%;
+    // max-width: 60%;
+    width: auto;
+    margin: auto;
+    // margin: 18px 0;
+    align-items: center;
   }
 
-  b {
-    font-weight: 500;
-  }
+  // b {
+  //   font-weight: 500;
+  // }
 
-  p {
-    padding: 0 40px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #60646B;
+  // p {
+  //   padding: 0 40px;
+  //   font-size: 14px;
+  //   line-height: 1.5;
+  //   color: #60646B;
 
-    b {
-      color: #000000;
-    }
-  }
+  //   b {
+  //     color: #000000;
+  //   }
+.phrase-button{
+  height: 22px;
 }
+.quiz-button{
+  height: 22px;
+}
+  $navbar-ios-height: 22px;
+
+
+  // $navbar-ios-height: 22px;
+  }
+// }

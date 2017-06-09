@@ -1,17 +1,17 @@
 .blue-theme {
-  h1, h2, h3, h4, h5, h6,
+  // h1, h2, h3, h4, h5, h6,
   .toolbar-title {
     color: #0034a7;
   }
   .toolbar-background {
     background-color:  #53e1ff;
   }
-  .toolbar {
-    height: 20px;
-  }
-  .navbar {
-    height: 20px;
-  }
+  // .toolbar {
+  //   height: 20px;
+  // }
+  // .navbar {
+  //   height: 20px;
+  // }
   ion-content {
 background-color: paleturquoise;
     // background-color: #f6f6ff;
@@ -22,60 +22,4 @@ background-color: paleturquoise;
       background-color: #f6f6ff, 1.5%;
     }
   }
-
- 
-// .card-background-page {
-// ion-card {
-//   position: relative;
-//   text-align: center;
-//   background:lightcyan;
-// }
-// .my-decks-deck {
-//   height: 150px;
-// }
-// .card-title {
-//   position: absolute;
-//   top: 15%;
-//   left: 15%;
-//   font-size: 1.5em;
-//   width: 100%;
-//   font-weight: bold;
-//   color: skyblue;
-//   -webkit-text-stroke-width: .5px;
-//   -webkit-text-stroke-color:teal;
-//   }
-// .card-subtitle {
-//   font-size: 1.3em;
-//   position: absolute;
-//   top: 50%;
-//   left: 15%;
-//   width: 100%;
-//   color:lightblue;  
-//   -webkit-text-stroke-width: .5px;
-//   -webkit-text-stroke-color:maroon;
-// }
-//   .full-image{
-//     width: 100%;
-//     height: 100%;
-
-//   }
-// .my-card .item.item-image{
-//   width: 100vw;
-//   margin-left: -10px;
-// }
-
-// .my-card.card{
-//   overflow: visible;
-// }
-// img {
-//   position: relative;
-//   width: 100%;
-//   padding: 0;
-//   display: block;    
-//   align-items: center;
-//   border-bottom-color: turquoise;
-  
-// }
-
-// }
 }
