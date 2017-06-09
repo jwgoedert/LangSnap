@@ -11,9 +11,15 @@
 <ion-content padding>
   <ion-slides pager (ionSlideDidChange)="slideChanged()">
     <ion-slide *ngFor="let card of cards; let id = index" (swipeleft)="swipeLeftEvent(id)" (swiperight)="swipeRightEvent(id)">
+        <div>
         {{ 'QUESTION' | translate }} {{ id + 1 }}
+        </div>
+        <div>
         <img [src]="card.imgUrl" class="slide-image"/>
+        </div>
+        <div>
         {{ 'QUIZ_PROMPT' | translate }}
+        </div>
         <ion-list >
             <ion-item tappable *ngFor="let choice of quizChoiceArray[id]; let pos = index" (click)="chooseAnswer(choice,pos)">
               <ion-label class="answer">

@@ -13,6 +13,7 @@ import { LanguageService } from '../../services/language.service';
 export class OAuthProvidersListPage {
 	@ViewChild(Nav) nav: Nav;
 	private oauthService: OAuthService;
+	public logo: string = "../../../assets/images/langsnap.png"; 
 	rootPage: any = HomePage;
 
 	constructor(oauthService: OAuthService, 

@@ -1,4 +1,3 @@
-<!--<div class="blue-theme">-->
 <ion-header >
 	<ion-navbar>
 		 <button ion-button menuToggle>
@@ -8,8 +7,9 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content>
-	<h4 padding>Login!</h4>
+<ion-content padding>
+	<img [src]="logo"/>
+	<h4  [ngStyle]="{ 'color':teal}" padding>Login!</h4>
 	<ion-list inset>
 		<ion-item (click)="login('facebook')">
 			<ion-icon name="logo-facebook" item-left></ion-icon>
@@ -17,4 +17,3 @@
 		</ion-item>
 	</ion-list>
 </ion-content>
-<!--</div>-->
