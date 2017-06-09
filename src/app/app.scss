@@ -14,10 +14,24 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-// @import "../pages/page1/page1";
 
-// @import "../pages/page2/page2";
+@import  "../pages/home/home";
+@import  "../pages/create-deck/create-deck";
+@import  "../pages/find-add-deck/find-add-deck";
+@import  "../pages/my-decks/my-decks";
+@import  "../pages/card/card";
+@import  "../pages/card-viewer/card-viewer";
+@import  "../pages/find-card/find-card";
+@import  "../pages/edit-deck/edit-deck";
+@import  "../pages/edit-deck-add/edit-deck-add";
+@import  "../pages/find-add-card-list/find-add-card-list";
+@import  "../pages/about-us/about-us";
+@import  "../pages/quiz/quiz";
+@import  "../pages/profile/profile";
+@import  "../pages/phrase-modal/phrase-modal";
+@import  "../pages/quiz-results/quiz-results";
 
-// @import "./app.blue";
 
-// @import "./app.red";
+@import "./app.blue";
+
+@import "./app.red";

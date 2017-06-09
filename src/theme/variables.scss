@@ -2,11 +2,36 @@
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
 // $background-color: paleturquoise;
-$background-color: rgb(171, 251, 212);
+// $background-color: rgb(171, 251, 212);
 // $background:url(http://www.iexpats.com/wp-content/uploads/2016/06/foreign-flags.jpg);
 @import "ionic.globals";
+@import "../app/app.blue";
+
+@import  "../pages/home/home";
+@import  "../pages/create-deck/create-deck";
+@import  "../pages/find-add-deck/find-add-deck";
+@import  "../pages/my-decks/my-decks";
+@import  "../pages/card/card";
+@import  "../pages/card-viewer/card-viewer";
+@import  "../pages/find-card/find-card";
+@import  "../pages/edit-deck/edit-deck";
+@import  "../pages/edit-deck-add/edit-deck-add";
+@import  "../pages/find-add-card-list/find-add-card-list";
+@import  "../pages/about-us/about-us";
+@import  "../pages/quiz/quiz";
+@import  "../pages/profile/profile";
+@import  "../pages/phrase-modal/phrase-modal";
+@import  "../pages/quiz-results/quiz-results";
+
+
 header{
   background: skyblue;
+}
+.toolbar{
+  height:20px;
+}
+.ion-navbar{
+  height:20px;
 }
 .toolbar-background {
   background-color: blue;
@@ -34,7 +59,15 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  // take the red pill
+  red-background: #fff6f6,
+  red-light: #ffa99c,
+  red-dark: #74000e,
+  // take the blue pillÏ
+  blue-background: #f6f6ff,
+  blue-light: #53e1ff,
+  blue-dark: #0034a7,
 );
 
 
@@ -68,7 +101,8 @@ $colors: (
 
 // @import "ionic.theme.default";
 @import "ionic.theme.dark";
-
+@import "../app/app.blue";
+@import "../app/app.red";
 
 // Ionicons
 // --------------------------------------------------
@@ -84,11 +118,5 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 
-// take the red pill
-$red-background: #fff6f6;
-$red-light: #ffa99c;
-$red-dark: #74000e;
-// take the blue pill
-$blue-background: #f6f6ff;
-$blue-light: #53e1ff;
-$blue-dark: #0034a7;
+
+

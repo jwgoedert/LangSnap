@@ -108,7 +108,9 @@ import { TransImageService } from '../services/transimage.service';
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule { }
+export class AppModule {
+chosenTheme: string;
+ }
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

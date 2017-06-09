@@ -1,6 +1,4 @@
 page-my-decks {
-$footer-background: yellow;
-background-color: teal;
 .card-background-page {
   ion-card {
     position: relative;
@@ -10,37 +8,28 @@ background-color: teal;
 .my-decks-deck {
   height: 150px;
 }
-
-  img {
-    position: relative;
-    width: 100%;
-    padding: 0;
-    display: block;    
-    align-items: center;
-    border-bottom-color: turquoise;
-   
+.card-title {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  font-size: 1.5em;
+  width: 100%;
+  font-weight: bold;
+  // color: skyblue;
+  color: maroon;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color:skyblue;
   }
-  .card-title {
-    position: absolute;
-    top: 15%;
-    left: 15%;
-    font-size: 1.5em;
-    width: 100%;
-    font-weight: bold;
-    color: skyblue;
-    -webkit-text-stroke-width: .5px;
-   -webkit-text-stroke-color:teal;
-  }
-  .card-subtitle {
-    font-size: 1.3em;
-    position: absolute;
-    top: 50%;
-    left: 15%;
-    width: 100%;
-    color:lightblue;  
-    -webkit-text-stroke-width: .5px;
-   -webkit-text-stroke-color:maroon;
-  }
+.card-subtitle {
+  font-size: 1.3em;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  width: 100%;
+  color:lightblue;  
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color:maroon;
+}
   .full-image{
     width: 100%;
     height: 100%;
@@ -56,4 +45,25 @@ background-color: teal;
 }
 
 }
+  img {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    display: block;    
+    align-items: center;
+    border-bottom-color: turquoise;
+  }
+  .home-button{
+  height: 30px;
+  width: 96% !important;
+  margin:2%;
+  margin-top: none;
+  margin-bottom:5px;
+  padding-bottom: 5px;
+  justify-content:center;
+  background: -webkit-linear-gradient(bottom, skyblue, skyblue, white, white,white,  white); 
+}
+  $navbar-ios-height: 22px;
+
+  
 }
