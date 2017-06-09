@@ -1,4 +1,5 @@
-w<ion-header>
+w
+<ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
@@ -10,19 +11,26 @@ w<ion-header>
 
 <ion-content padding>
   <h1>{{ cardInfo.title }} </h1>
-    <ion-card>  
-    <img [src]= "cardInfo.picture" />
+  <ion-card>
+    <img class="picture" [src]="cardInfo.picture" />
     <ion-card *ngIf="!!translation">
-    <h3 padding>{{ 'YOUR_WORD' | translate }}: {{ cardInfo.word }} </h3>
-    <h3>{{ 'TRANSLATION' | translate }}: {{ translation }}</h3>
-    {{ 'NOT_RIGHT_WORD' | translate}}
-    <form (click)="tryAgain(tryAgain.title); tryAgainForm.reset()" #tryAgainForm="ngForm" padding>
-      <ion-input type="text" [(ngModel)]="tryAgain.title" name="title" placeholder="{{ 'ENTER_YOUR_WORD' | translate }}"></ion-input>
-      <button ion-button outline type="button">{{ 'TRY_AGAIN' | translate }}</button>
-    </form>
-    <button ion-button outline  (click)="facebookShare()"> <ion-icon name="logo-facebook"></ion-icon></button>
+      <h3 padding>{{ 'YOUR_WORD' | translate }}: {{ cardInfo.word }} </h3>
+      <h3>{{ 'TRANSLATION' | translate }}: {{ translation }}</h3>
+      {{ 'NOT_RIGHT_WORD' | translate}}
+      <form (click)="tryAgain(tryAgain.title); tryAgainForm.reset()" #tryAgainForm="ngForm" padding>
+        <ion-input type="text" [(ngModel)]="tryAgain.title" name="title" placeholder="{{ 'ENTER_YOUR_WORD' | translate }}"></ion-input>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <button ion-button outline type="button">{{ 'TRY_AGAIN' | translate }}</button>
+            </ion-col>
+            <ion-col col-6>
+              <button ion-button outline (click)="facebookShare()"> <ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
     </ion-card>
-    </ion-card>
+  </ion-card>
   <button ion-button full (click)="createCard()" outline>{{ 'CREATE_CARD' | translate }}</button>
 </ion-content>
-

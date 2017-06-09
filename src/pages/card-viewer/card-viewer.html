@@ -8,33 +8,43 @@
 </ion-header>
 
 <ion-content padding>
-<ion-slides pager (swipeleft)="swipeLeftEvent(id)" (swiperight)="swipeRightEvent(id)" (ionSlideWillChange)="slideChanged()">
+<!--<ion-slides pager (swipeleft)="swipeLeftEvent(id)" (swiperight)="swipeRightEvent(id)" (ionSlideWillChange)="slideChanged()">-->
+<ion-slides (swipeleft)="swipeLeftEvent(id)" (swiperight)="swipeRightEvent(id)" (ionSlideWillChange)="slideChanged()">
     <ion-slide *ngFor="let card of deck; let id = index" >
       <h2 class="slide-title">{{ deckTitle }}</h2>
-        <h4>{{ deckLanguage }}</h4>
+        <h4 class="deck-language">{{ deckLanguage }}</h4>
         <img [src]="card.imgUrl" class="slide-image"/>
-      <ion-card>{{ word }}</ion-card><button ion-button outline (click)="sayText()"><ion-icon ios="ios-volume-up-outline" md="md-volume-up"></ion-icon></button>
-      <button ion-button outline (click)="flip(id)">{{ 'FLIP' | translate }}</button>
+      <ion-card>{{ word }}</ion-card>
+    <ion-row>
+      <ion-col col-6>
+      <button ion-button small block outline (click)="sayText()"><ion-icon ios="ios-volume-up-outline" md="md-volume-up"></ion-icon></button>
+      </ion-col>
+      <ion-col col-6>
+      <button ion-button small block outline (click)="flip(id)">{{ 'FLIP' | translate }}</button>
+      </ion-col>
+    </ion-row>
     <ion-grid>
     <ion-row>
       <ion-col col-4>
-        <button ion-button icon-middle outline (click)="thumbsUp()">
+        <button ion-button small block icon-middle color="secondary" (click)="thumbsUp()">
           <i class="fa fa-smile-o" aria-hidden="true"></i>
+
         </button>
       </ion-col>
 
       <ion-col col-4>
-        <button ion-button icon-middle outline (click)="thumbsMiddle()">
+        <button ion-button small block icon-middle color="default" (click)="thumbsMiddle()">
           <i class="fa fa-meh-o" aria-hidden="true"></i>
         </button>
       </ion-col>
 
-          <i class="fa frown-o" aria-hidden="true"></i>	
       <ion-col col-4>
-        <button ion-button icon-middle outline (click)="thumbsDown()">
+        <button ion-button small block icon-middle color="danger" (click)="thumbsDown()">
           <i class="fa fa-frown-o" aria-hidden="true"></i>
+
         </button>
       </ion-col>
+          <!--<i class="fa frown-o" aria-hidden="true"></i>	-->
 
     </ion-row>
   </ion-grid>
@@ -43,19 +53,21 @@
 </ion-content>
 
 <ion-footer>
+  <ion-toolbar>
   <ion-grid>
     <ion-row>
       <ion-col col-6>
-        <button ion-button outline block (click)="presentPhraseModal()">
+        <button class = "phrase-button" ion-button small block (click)="presentPhraseModal()">
           {{ 'PHRASE' | translate }}
           </button>
       </ion-col>
 
       <ion-col col-6>
-        <button ion-button outline block (click)="takeAQuiz()">
+        <button class="quiz-button" ion-button small block  (click)="takeAQuiz()">
           {{ 'QUIZ' | translate }}
         </button>
       </ion-col>
     </ion-row>
   </ion-grid>
+  </ion-toolbar>
 </ion-footer>

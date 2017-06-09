@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -13,17 +14,11 @@
   <ion-list >
     <ion-card>
       <ion-item *ngFor="let card of cards; let id = index">
-        <ion-card>
-          <ion-thumbnail item-left>
+          <ion-avatar item-left>
             <img [src]="card.image" *ngIf="card.image" />
-          </ion-thumbnail>
-        </ion-card>
-        <ion-card>
-          <div class=“card-title”>{{card.word}}</div>
-        </ion-card>
-        <ion-card>
-          <div class=“card-subtitle”>{{card.translation}}</div>
-        </ion-card>
+          </ion-avatar>
+          <h2 class=“card-title”>{{card.word}}</h2>
+          <p class=“card-subtitle”>{{card.translation}}</p>
       </ion-item>
     </ion-card>
   </ion-list>
@@ -33,19 +28,19 @@
   <ion-grid>
     <ion-row>
       <ion-col col-4>
-        <button ion-button icon-middle outline (click)="cameraRoll()">
+        <button ion-button block icon-middle color="primary"  (click)="cameraRoll()">
           <ion-icon ios="ios-images" md="md-images" ></ion-icon>
         </button>
       </ion-col>
 
       <ion-col col-4>
-        <button ion-button icon-middle outline (click)="takePhoto()">
+        <button ion-button block icon-middle  color="secondary" (click)="takePhoto()">
           <ion-icon ios="ios-camera" md="md-camera" ></ion-icon>
         </button>
       </ion-col>
 
       <ion-col col-4>
-        <button ion-button icon-middle outline (click)="findCard()">
+        <button ion-button block icon-middle  color="red-light" (click)="findCard()">
           <ion-icon ios="ios-search" md="md-search" ></ion-icon>
         </button>
       </ion-col>
@@ -54,4 +49,3 @@
   </ion-grid>
   <button ion-button full (click)="createDeck()" outline>{{ 'ADD_CARD' | translate }}</button>
 </ion-footer>
-

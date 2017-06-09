@@ -1,12 +1,20 @@
 page-quiz {
   $radio-ios-item-start-margin-top: 0px;
   $radio-ios-item-start-margin-bottom: 0px;
+  color:teal;
   .answer {
     margin: 0px;
     display: block;
     // padding: 0px !important;
   }
+  div{
+    color:teal;
+  }
   .label {
     margin: 0;
+  }
+  .slide-image{
+    padding-top:10px;
+    height: 120px;
   }
 }

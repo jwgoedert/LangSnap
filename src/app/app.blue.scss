@@ -1,0 +1,25 @@
+.blue-theme {
+  // h1, h2, h3, h4, h5, h6,
+  .toolbar-title {
+    color: #0034a7;
+  }
+  .toolbar-background {
+    background-color:  #53e1ff;
+  }
+  // .toolbar {
+  //   height: 20px;
+  // }
+  // .navbar {
+  //   height: 20px;
+  // }
+  ion-content {
+background-color: paleturquoise;
+    // background-color: #f6f6ff;
+    // background-color: #53e1ff;
+  }
+  ion-list {
+    .item {
+      background-color: #f6f6ff, 1.5%;
+    }
+  }
+}

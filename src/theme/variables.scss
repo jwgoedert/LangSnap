@@ -2,15 +2,17 @@
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
 // $background-color: paleturquoise;
-$background-color: rgb(171, 251, 212);
+// $background-color: rgb(171, 251, 212);
 // $background:url(http://www.iexpats.com/wp-content/uploads/2016/06/foreign-flags.jpg);
 @import "ionic.globals";
+@import "../app/app.blue";
+
+
+
 header{
   background: skyblue;
 }
-.toolbar-background {
-  background-color: blue;
-}
+
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -34,7 +36,15 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  // take the red pill
+  red-background: #fff6f6,
+  red-light: #ffa99c,
+  red-dark: #74000e,
+  // take the blue pillÏ
+  blue-background: #f6f6ff,
+  blue-light: #53e1ff,
+  blue-dark: #0034a7,
 );
 
 
@@ -68,7 +78,8 @@ $colors: (
 
 // @import "ionic.theme.default";
 @import "ionic.theme.dark";
-
+@import "../app/app.blue";
+@import "../app/app.red";
 
 // Ionicons
 // --------------------------------------------------
@@ -84,11 +95,5 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 
-// take the red pill
-$red-background: #fff6f6;
-$red-light: #ffa99c;
-$red-dark: #74000e;
-// take the blue pill
-$blue-background: #f6f6ff;
-$blue-light: #53e1ff;
-$blue-dark: #0034a7;
+
+
