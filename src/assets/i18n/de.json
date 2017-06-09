@@ -37,6 +37,14 @@
   "QUIZ_PROMPT" : "Welches Wort beschreibt das obige Bild?",
   "RESULTS" : "Ergebnisse",
   "HOME" : "Zuhause",
-  "DONE" : "Erledigt"
+  "DONE" : "Erledigt",
+  "YOURS" : "Deine",
+  "ANSWERS" : "Antworten",
+  "CARD" : "Karte",
+  "VIEW" : "Aussicht",
+  "ADD" : "Hinzufügen",
+  "DELETE" : "Löschen",
+  "EDIT": "Bearbeiten",
+  "IMAGE_TEXT" : "Bild zu Text"
 }
 

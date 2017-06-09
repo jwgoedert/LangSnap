@@ -37,5 +37,13 @@
   "QUIZ_PROMPT" : "どの言葉が上のイメージを描いていますか?",
   "RESULTS" : "結果",
   "HOME" : "ホーム",
-  "DONE" : "完了"
+  "DONE" : "完了",
+  "YOURS" : "あなたの",
+  "ANSWERS" : "回答",
+  "CARD" : "カード",
+  "VIEW" : "ビュー",
+  "ADD" : "追加",
+  "DELETE" : "削除",
+  "EDIT": "編集",
+  "IMAGE_TEXT" : "テキストからイメージへ"
 }

@@ -37,8 +37,8 @@ export class MyApp {
         { title: 'My Decks', component: MyDecksPage, icon: 'albums' },
         { title: 'Find/Add Decks', component: FindAddDeckPage, icon: 'search' },
         { title: 'Create Decks', component: CreateDeckPage, icon: 'add' },
-        { title: 'Profile', component: ProfilePage, icon: 'person' },
         { title: 'Image To Text', component: TransImagePage, icon: 'person' },
+        { title: 'Profile', component: ProfilePage, icon: 'person' },
       ];
 
   }

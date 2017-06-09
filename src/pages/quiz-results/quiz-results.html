@@ -12,7 +12,7 @@
   <ion-list>
     <ion-list-header class="row">
       <ion-row>
-        <ion-col col-2 left-align>Card</ion-col><ion-col col-5>Yours</ion-col><ion-col col-5>Answer</ion-col>
+        <ion-col col-2 left-align>{{ 'CARD' | translate }}</ion-col><ion-col col-5>{{ 'YOURS' | translate }}</ion-col><ion-col col-5>{{ 'ANSWERS' | translate }}</ion-col>
       </ion-row>
     </ion-list-header>
     <ion-item *ngFor="let result of results; let id = index">

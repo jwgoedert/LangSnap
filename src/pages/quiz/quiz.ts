@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav, NavParams, Slides  } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+
 import { OAuthService } from '../oauth/oauth.service';
 import { LanguageService } from '../../services/language.service';
 import { AnswerService } from '../../services/answer.service';
+import { CameraService } from '../../services/camera.service';
 
 import { QuizResultsPage } from '../quiz-results/quiz-results';
 @Component({
@@ -29,10 +31,8 @@ export class QuizPage {
   oauthService: OAuthService,
   public languageService: LanguageService,
   public navParams: NavParams,
-  private answerService: AnswerService) {
-    console.log("navParams.get('deck')");
-    console.log(navParams.get('deck'));
-    console.log("navParams.get('deck')");
+  private answerService: AnswerService,
+    public cameraService: CameraService) {
     oauthService.getProfile().toPromise()
         .then( profile => {
           this.profile = profile;
@@ -44,6 +44,7 @@ export class QuizPage {
         .catch(err => {
           console.log("Error" + JSON.stringify(err))
         });
+    this.cameraService.showLoading(1300);
 }
 
   ionViewDidLoad() {
@@ -53,17 +54,10 @@ export class QuizPage {
   getQuizInfo() {
     setTimeout(() => {
       this.cards = this.answerService.deck;
-      console.log("this.cards")
-      console.log(JSON.stringify(this.cards))
-      console.log(JSON.stringify(this.cards.length))
-      console.log("this.cards")
       this.answerChoiceArray = this.answerService.answerChoices;
-      // console.log("this.answerChoiceArray")
-      // console.log(JSON.stringify(this.answerChoiceArray))
-      // console.log("this.answerChoiceArray")
       this.answerService.clearChoiceArray();
       this.makeQuizChoiceArray();
-    }, 1500);
+    }, 1200);
   }
 
   swipeLeftEvent(index) {
@@ -128,6 +122,13 @@ export class QuizPage {
       for (let i = 0; i < holderArr.length; i++) {
         if (!holderArr[i] && holderArr.indexOf(this.answerChoiceArray[i]) === - 1) {
           holderArr[i] = this.answerChoiceArray[i];
+        }
+      }
+      if (holderArr.indexOf(undefined) > - 1) {
+        for (let i = 0; i < holderArr.length; i++) {
+          if (holderArr[holderArr.indexOf(undefined)] === undefined && holderArr.indexOf(this.answerChoiceArray[i]) === - 1) {
+            holderArr[holderArr.indexOf(undefined)] = this.answerChoiceArray[i];
+          }
         }
       }
       holderArr = holderArr.map(el=>{

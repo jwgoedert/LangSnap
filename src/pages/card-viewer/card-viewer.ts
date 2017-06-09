@@ -114,6 +114,7 @@ export class CardViewerPage {
   }
   thumbsMiddle() {
     this.answerService.cardAnswer(this.deckId, this.deck[this.index].id, 'ok')
+
   }
   thumbsDown() {
     this.answerService.cardAnswer(this.deckId, this.deck[this.index].id, 'bad')

@@ -37,7 +37,15 @@
   "QUIZ_PROMPT" : "Which word describes the above image?",
   "RESULTS" : "Results",
   "HOME" : "Home",
-  "DONE" : "Done"
+  "DONE" : "Done",
+  "YOURS" : "Yours",
+  "ANSWERS" : "Answers",
+  "CARD" : "Card",
+  "VIEW" : "View",
+  "ADD" : "Add",
+  "DELETE" : "Delete",
+  "EDIT": "Edit",
+  "IMAGE_TEXT" : "Image to text"  
 }
 
 

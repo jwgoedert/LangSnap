@@ -37,5 +37,13 @@
   "QUIZ_PROMPT" : "¿Qué palabra describe la imagen anterior?",
   "RESULTS" : "Resultados",
   "HOME" : "Casa",
-  "DONE" : "Hecho"
+  "DONE" : "Hecho",
+  "YOURS" : "Tuya",
+  "ANSWERS" : "Respuestas",
+  "CARD" : "Tarjeta",
+  "VIEW" : "Ver",
+  "ADD" : "Añadir",
+  "DELETE" : "Borrar",
+  "EDIT": "Editar",
+  "IMAGE_TEXT" : "Imagen al texto"
 }

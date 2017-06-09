@@ -37,7 +37,15 @@
   "QUIZ_PROMPT" : "Quel mot décrit l'image ci-dessus?",
   "RESULTS" : "Résultats",
   "HOME" : "Accueil",
-  "DONE" : "Terminé"
+  "DONE" : "Terminé",
+  "YOURS" : "Le tiens",
+  "ANSWERS" : "Réponses",
+  "CARD" : "Carte",
+  "VIEW" : "Vue",
+  "ADD" : "Ajouter",
+  "DELETE" : "Effacer",
+  "EDIT": "modifier",
+  "IMAGE_TEXT" : "Image au texte"
 }
 
 

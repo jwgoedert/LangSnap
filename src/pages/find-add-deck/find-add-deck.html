@@ -19,13 +19,13 @@
         
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="openCard(item.id)">
         <ion-icon name="eye"></ion-icon>
-        View
+        {{ 'VIEW' | translate }}
       </button>
         <button ion-button color="danger" (click)="addDeckToUser(item.id, i)">
         <ion-icon name="add-circle"></ion-icon>
-          Add
+          {{ 'ADD' | translate }}
       </button>
       </ion-item-options>
     </ion-item-sliding>

@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, NavController, NavParams } from 'ionic-angular';
-import { TranslateService } from '@ngx-translate/core';
 import { AlertController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+
 import { ProfileService } from '../../services/profile.service'
 import { OAuthService } from '../oauth/oauth.service';
 import { LanguageService } from '../../services/language.service';
+
 import { HomePage } from '../home/home';
 
 @Component({

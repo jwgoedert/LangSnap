@@ -19,11 +19,11 @@
         <ion-item-options side="right">
           <button ion-button color="primary" (click)="editDeck(item.id)">
         <ion-icon name="text"></ion-icon>
-        Edit
+        {{ 'EDIT' | translate }}
       </button>
           <button ion-button color="danger" (click)="deleteDeck(item.id, item.name)">
         <ion-icon name="trash"></ion-icon>
-        Delete
+        {{ 'DELETE' | translate }}
       </button>
         </ion-item-options>
       </ion-item-sliding>

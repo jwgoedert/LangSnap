@@ -56,6 +56,23 @@ export class FindAddDeckPage {
         return deck;
       })
   }
+  
+  openCard(deckId) {
+    this.deckService.getAllCardsInADeck(deckId);
+    this.navCtrl.push(FindAddCardListPage, { native: this.languageService.translateLang(this.profile.nativeLang), learning: this.languageService.translateLang(this.profile.learnLang) })
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FindAddDeckPage');
+  }
+
+  goHome() {
+    this.navCtrl.setRoot(HomePage)
+  }
+
+  editDeck() {
+    this.navCtrl.setRoot(MyDecksPage)
+  }
 
   getItems(ev) {
     this.initializeItems();
@@ -68,15 +85,6 @@ export class FindAddDeckPage {
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-  }
-
-  openCard(deckId) {
-    this.deckService.getAllCardsInADeck(deckId);
-    this.navCtrl.push(FindAddCardListPage, { native: this.languageService.translateLang(this.profile.nativeLang), learning: this.languageService.translateLang(this.profile.learnLang) })
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FindAddDeckPage');
   }
 
   addDeckToUser(deckId, index) {
@@ -92,13 +100,6 @@ export class FindAddDeckPage {
     }
   }
 
-  goHome() {
-    this.navCtrl.setRoot(HomePage)
-  }
-
-  editDeck() {
-    this.navCtrl.setRoot(MyDecksPage)
-  }
  
   addDecks() {
     this.chosenDecks = this.chosenDecks.filter(el => el !== -1);

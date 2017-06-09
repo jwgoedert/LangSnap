@@ -21,7 +21,6 @@ export class LanguageService {
       ];
   }
   translateLang(lang) {
-    console.log(lang, 'lang')
     let translateTo = [
         'en',
         'fr',
@@ -30,7 +29,6 @@ export class LanguageService {
         'ru',
         'de'
       ];
-    console.log(translateTo[this.languages.indexOf(lang)])
     return translateTo[this.languages.indexOf(lang)]
   }
 }

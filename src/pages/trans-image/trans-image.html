@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-    <ion-title>Translate Image Text</ion-title>
+    <ion-title>{{ 'IMAGE_TEXT' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -32,17 +32,20 @@
   <ion-grid>
     <ion-row>
       <ion-col col-6>
-        <button ion-button icon-middle outline (click)="cameraRoll()">
+        <button ion-button icon-middle outline block (click)="cameraRoll()">
           <ion-icon ios="ios-images" md="md-images" ></ion-icon>
         </button>
       </ion-col>
 
       <ion-col col-6>
-        <button ion-button icon-middle outline (click)="takePhoto()">
+        <button ion-button icon-middle outline block (click)="takePhoto()">
           <ion-icon ios="ios-camera" md="md-camera" ></ion-icon>
         </button>
       </ion-col>
-
     </ion-row>
   </ion-grid>
+  <button ion-button block outline (click)="goHome()">
+    <ion-icon name="home">
+    </ion-icon>{{ 'HOME' | translate }}
+  </button>
 </ion-footer>

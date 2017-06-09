@@ -4,6 +4,7 @@ import { NavController, Nav, AlertController, LoadingController } from 'ionic-an
 import { MyDecksPage } from '../my-decks/my-decks';
 import { FindCardPage } from '../find-card/find-card';
 import { CardPage } from '../card/card';
+import { HomePage } from '../home/home';
 
 import { TranslateService } from '@ngx-translate/core';
 import { OAuthService } from '../oauth/oauth.service';
@@ -142,5 +143,8 @@ export class TransImagePage {
   }
   setTranslation() {
     this.translatedWord = this.transImageService.getTranslatedWord();
+  }
+  goHome() {
+    this.navCtrl.setRoot(HomePage)
   }
 }
