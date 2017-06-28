@@ -4,6 +4,12 @@
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
+<<<<<<< HEAD
+=======
+    <content src="index.html" />
+
+
+>>>>>>> (maint)Update config.xml
     <access origin="*" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -11,6 +17,7 @@
     <allow-navigation href="http://172.24.2.137:8100" />
     <allow-navigation href="http://172.24.3.0:8100" />
     <allow-navigation href="http://192.168.0.27:8100" />
+<<<<<<< HEAD
     <allow-navigation href="http://172.24.2.137:8101" />
     <allow-navigation href="http://192.168.1.148:8100" />
     <allow-navigation href="http://192.168.99.1:8100" />
@@ -20,6 +27,8 @@
     <allow-navigation href="http://192.168.1.183:8101" />
     <allow-navigation href="http://192.168.1.19:8100" />
     <allow-navigation href="http://192.168.1.5:8100" />
+=======
+>>>>>>> (maint)Update config.xml
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
