@@ -45,7 +45,8 @@
   "ADD" : "Add",
   "DELETE" : "Delete",
   "EDIT": "Edit",
-  "IMAGE_TEXT" : "Image to text"  
+  "IMAGE_TEXT" : "Image to text",
+  "PLAYER": "Player" 
 }
 
 

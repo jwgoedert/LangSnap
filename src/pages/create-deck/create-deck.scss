@@ -19,6 +19,9 @@ page-create-deck {
   h3{
     color: teal;
   }
+ .text {
+    color: teal !important;
+  }
   ion-card {
     position: relative;
     text-align: center;

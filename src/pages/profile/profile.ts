@@ -50,10 +50,6 @@ export class ProfilePage {
         }); 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
-
   langForm(email, native, learning) {
     if (!email.includes("@") || !email.length || !native || !learning){ 
       var formError = this.alertCtrl.create({

@@ -16,7 +16,7 @@
         <ion-item class="my-decks-deck" (click)="openDeck(item.id)">
           <img class="full-image" [src]="item.cards[0].imgUrl" />
           <div class="card-title">{{item.name}}</div>
-          <div class="card-subtitle">{{item.cards.length}} Cards</div>
+          <div class="card-subtitle">{{ card(item.cards.length, item.cards[0].imgUrl) }}</div>
         </ion-item>
         <ion-item-options side="right">
           <button ion-button color="primary" (click)="editDeck(item.id)">

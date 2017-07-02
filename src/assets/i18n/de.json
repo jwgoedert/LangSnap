@@ -45,6 +45,7 @@
   "ADD" : "Hinzufügen",
   "DELETE" : "Löschen",
   "EDIT": "Bearbeiten",
-  "IMAGE_TEXT" : "Bild zu Text"
+  "IMAGE_TEXT" : "Bild zu Text",
+  "PLAYER": "Spieler"
 }
 

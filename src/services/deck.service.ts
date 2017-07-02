@@ -5,7 +5,6 @@ import { Config } from '../config';
 
 @Injectable()
 export class DeckService {
-  // private serverDBUrl = `http://52.14.252.211`;
   public usersDecks: Array<any> = [];
   public allDecks: Array<any> = [];
   public allCards: Array<any> = [];
@@ -24,6 +23,9 @@ export class DeckService {
   // adds a card to current deck creation for page display
   addToDeckCreation(card) {
     this.creatingDeck.push(card);
+    console.log('JSON.stringify(this.creatingDeck[this.creatingDeck.length - 1])')
+    console.log(JSON.stringify(this.creatingDeck[this.creatingDeck.length - 1]))
+    console.log('JSON.stringify(this.creatingDeck[this.creatingDeck.length - 1])')
   }
 
   // edit card in current deck creation in case user changes their word 
@@ -119,8 +121,8 @@ export class DeckService {
           this.currentDeck[0].cards[0] = {
             imgUrl: "https://www.askideas.com/media/08/Sorry-With-Emoticon-Picture.jpg",
             wordMap: JSON.stringify({
-              sorry: "No Cards, Try Another Deck",
-              reallSorry: "Seriously Pick Another Deck Already."
+              sorry: "No Cards, Try Adding Some.",
+              reallSorry: "Add Cards To This Deck With Edit."
             })
           }
           return this.currentDeck;

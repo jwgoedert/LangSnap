@@ -62,10 +62,6 @@ export class FindAddDeckPage {
     this.navCtrl.push(FindAddCardListPage, { native: this.languageService.translateLang(this.profile.nativeLang), learning: this.languageService.translateLang(this.profile.learnLang) })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FindAddDeckPage');
-  }
-
   goHome() {
     this.navCtrl.setRoot(HomePage)
   }

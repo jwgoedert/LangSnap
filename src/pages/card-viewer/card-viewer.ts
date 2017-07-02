@@ -40,28 +40,23 @@ export class CardViewerPage {
     private textToSpeech: TextToSpeech,
     private alertCtrl: AlertController) {
     oauthService.getProfile().toPromise()
-        .then(profile => {
-          console.log(profile, 'profile')
-          this.profile = profile;
-          translateService.use(languageService.translateLang(this.profile.nativeLang));
-          this.deck = this.deckService.getCurrentDeck();
-          this.deckId = this.deck[0].id;
-          this.deckTitle = this.deck[0].name
-          this.deck = this.deck[0].cards
+      .then(profile => {
+        this.profile = profile;
+        translateService.use(languageService.translateLang(this.profile.nativeLang));
+        this.deck = this.deckService.getCurrentDeck();
+        this.deckId = this.deck[0].id;
+        this.deckTitle = this.deck[0].name
+        this.deck = this.deck[0].cards
 
-          if (!JSON.parse(this.deck[0].wordMap)["sorry"]) {
-            this.deckLanguage = this.profile.learnLang;
-          }
+        if (!JSON.parse(this.deck[0].wordMap)["sorry"]) {
+          this.deckLanguage = this.profile.learnLang;
+        }
 
-          this.translations();
-        })
-        .catch(err => {
-          console.log("Error" + JSON.stringify(err))
-        }); 
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CardViewerPage');
+        this.translations();
+      })
+      .catch(err => {
+        console.log("Error" + JSON.stringify(err))
+      }); 
   }
 
   translations() {
@@ -88,16 +83,19 @@ export class CardViewerPage {
       this.word = this.wordsTranslations[this.wordsLanguages[0]];
     }
   }
+
   swipeLeftEvent(index) {
     if (index < this.deck.length - 1) {
       this.slides.lockSwipeToNext(false)
     }
   }
+
   swipeRightEvent(index) {
     if (index > 0) {
       this.slides.lockSwipeToPrev(false)
     }
   }
+
   flip(index) {
     if (this.word === this.wordsTranslations[this.wordsLanguages[0]]){
       this.word = this.wordsTranslations[this.wordsLanguages[1]];
@@ -109,6 +107,7 @@ export class CardViewerPage {
       return;
     }
   }
+
   thumbsUp() {
     this.answerService.cardAnswer(this.deckId, this.deck[this.index].id, 'good')
   }
@@ -119,10 +118,12 @@ export class CardViewerPage {
   thumbsDown() {
     this.answerService.cardAnswer(this.deckId, this.deck[this.index].id, 'bad')
   }
+
   presentPhraseModal() {
    let profileModal = this.modalCtrl.create(PhraseModalPage, { word:  JSON.parse(this.deck[this.index].wordMap)['en']});
    profileModal.present();
- }
+  }
+
   takeAQuiz() {
     if (this.deck.length < 5) {
       let sorry = this.alertCtrl.create({
@@ -153,7 +154,6 @@ export class CardViewerPage {
 
     try {
       await this.textToSpeech.speak({ text: this.word, locale: langObj[this.wordsLanguages[this.langIndex]], rate: 1 });
-      console.log(`Succesfully spoke ${this.word}`)
     } catch (error) {
       console.error(error);
     }

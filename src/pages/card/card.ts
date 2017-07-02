@@ -34,9 +34,6 @@ export class CardPage {
     public platform: Platform) {
       oauthService.getProfile().toPromise()
         .then(profile => {
-          console.log('Params in cards');
-          console.log(JSON.stringify(this.navParams));
-          
           this.profile = profile;
           translateService.use(languageService.translateLang(this.profile.nativeLang));
           this.cameraService.languages(this.languageService.translateLang(this.profile.nativeLang), this.languageService.translateLang(this.profile.learnLang))
@@ -44,8 +41,8 @@ export class CardPage {
         .catch(err => {
           console.log("Error" + JSON.stringify(err))
         });
-      this.cardInfo = this.cameraService.getCardInfo();
-      this.getTranslation();
+    this.cardInfo = this.cameraService.getCardInfo();
+    this.getTranslation();
   }
   getTranslation() {
     setTimeout(() => {
@@ -54,21 +51,21 @@ export class CardPage {
     }, 1500)
   }
   facebookShare() {
-      this.platform.ready().then(() => {
-        this.screenshot.URI(80)
-          .then((res) => {
-              console.log(res);
-              this.socialSharing.shareViaFacebook(null, res.URI, null)
-                .then(() => {},
-                  () => {
-                    alert('SocialSharing failed');
-                  });
-            },
-            () => {
-              alert('Screenshot failed');
-            });
-      });
-    }
+    this.platform.ready().then(() => {
+      this.screenshot.URI(80)
+        .then((res) => {
+            console.log(res);
+            this.socialSharing.shareViaFacebook(null, res.URI, null)
+              .then(() => {},
+                () => {
+                  alert('SocialSharing failed');
+                });
+          },
+          () => {
+            alert('Screenshot failed');
+          });
+    });
+  }
   
   tryAgain(word) {
     if (word) {
@@ -91,10 +88,6 @@ export class CardPage {
       });
       confirm.present();
     }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CardPage');
   }
 
   createCard() {

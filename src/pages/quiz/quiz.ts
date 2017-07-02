@@ -45,10 +45,6 @@ export class QuizPage {
           console.log("Error" + JSON.stringify(err))
         });
     this.cameraService.showLoading(1300);
-}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad QuizPage');
   }
 
   getQuizInfo() {

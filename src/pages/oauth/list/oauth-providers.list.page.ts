@@ -13,7 +13,8 @@ import { LanguageService } from '../../services/language.service';
 export class OAuthProvidersListPage {
 	@ViewChild(Nav) nav: Nav;
 	private oauthService: OAuthService;
-	public logo: string = "../../../assets/images/langsnap.png"; 
+	// public logo: string = "../../../assets/images/langsnap.png"; 
+	public logo: string = "http://res.cloudinary.com/dvlztondd/image/upload/v1497026827/langsnap_h76b2z.png"; 
 	rootPage: any = HomePage;
 
 	constructor(oauthService: OAuthService, 

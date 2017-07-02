@@ -9,23 +9,29 @@
 
 <ion-content padding>
   <ion-content>
-  <ion-list >
-    <ion-card *ngIf="!!fourN">
-      <ion-item>
-        <ion-card>
+  <!--<ion-list >-->
+    <!--<ion-card *ngIf="!!fourN">-->
+    <div *ngIf="!!fourN">
+      <!--<ion-item>-->
+        <!--<ion-card>-->
           <ion-thumbnail item-left>
             <img [src]="photo" *ngIf="photo" />
           </ion-thumbnail>
-        </ion-card>
-        <ion-card>
+        <!--</ion-card>-->
+        <div>
+        <!--<ion-card>-->
           <div class="card-subtitle">{{native}}</div>
-        </ion-card>
-        <ion-card>
+        <!--</ion-card>-->
+        </div>
+        <div>
+        <!--<ion-card>-->
           <div class=“card-subtitle”>{{fourN}}</div>
-        </ion-card>
-      </ion-item>
-    </ion-card>
-  </ion-list>
+        <!--</ion-card>-->
+        </div>
+      <!--</ion-item>-->
+    </div>
+    <!--</ion-card>-->
+  <!--</ion-list>-->
 </ion-content>
 
 <ion-footer>

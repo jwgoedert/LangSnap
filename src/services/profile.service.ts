@@ -11,6 +11,8 @@ export class ProfileService {
     public config: Config) {
     this.http = http;
   }
+
+  // check to see if user profile is in db
 	checkUser(userName, source): Promise<OAuthProfile> {
     if (userName.split(' ').length === 3) {
       userName = [userName.split(' ')[0], userName.split(' ')[2]].join(' ');
@@ -55,6 +57,7 @@ export class ProfileService {
       .toPromise();
     }
 
+    // update user profile
     updateUser(user) {
       this.http.post(`${this.config.serverUrl}/users/findorcreate`, user)
         .subscribe(data => {
