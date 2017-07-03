@@ -20,6 +20,7 @@ export class LanguageService {
         'German'
       ];
   }
+
   translateLang(lang) {
     let translateTo = [
         'en',

@@ -36,7 +36,7 @@ export class MyApp {
         { title: 'Home', component: HomePage, icon: 'home' },
         { title: 'My Decks', component: MyDecksPage, icon: 'albums' },
         { title: 'Find/Add Decks', component: FindAddDeckPage, icon: 'search' },
-        { title: 'Create Decks', component: CreateDeckPage, icon: 'add' },
+        { title: 'Create A Deck', component: CreateDeckPage, icon: 'add' },
         { title: 'Image To Text', component: TransImagePage, icon: 'person' },
         { title: 'Profile', component: ProfilePage, icon: 'person' },
       ];
@@ -53,8 +53,6 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }

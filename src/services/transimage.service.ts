@@ -43,22 +43,25 @@ export class TransImageService {
       loading.dismiss();
     }, wait);
   }
- sendPic(form) {
-  return this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, form)
-   .map(info => {
-    this.picUrl = info.json().url;
-    return this.picUrl;
-   }).toPromise()
-   .then((url) => {
-    return this.getGoogle(url, this.nativeLang, this.learnLang)
-   })
-   .then((word) => {
-    this.word = word
-   })
-   .catch(err => {
-    console.log('error from map:', JSON.stringify(err));
-   });
- }
+  
+  sendPic(form) {
+      this.word = ""
+      this.nativeWord = ""
+    return this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, form)
+    .map(info => {
+      this.picUrl = info.json().url;
+      return this.picUrl;
+    }).toPromise()
+    .then((url) => {
+      return this.getGoogle(url, this.nativeLang, this.learnLang)
+    })
+    .then((word) => {
+      this.word = word
+    })
+    .catch(err => {
+      console.log('error from map:', JSON.stringify(err));
+    });
+  }
  
   getGoogle(imgUrl, nativeLang, learnLang) {
   return this.http.post(`${this.config.serverUrl}/googleocr`, { url: imgUrl })

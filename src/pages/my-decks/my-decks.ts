@@ -64,19 +64,23 @@ export class MyDecksPage {
     }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyDecksPage');
-  }
   openDeck(deckId) {
     this.deckService.getAllCardsInADeck(deckId);
     this.navCtrl.push(CardViewerPage)
   }
+
   editDeck(deckId) {
-    console.log('Deck to edit');
-    console.log(deckId);
     this.deckService.deckEditCards = this.deckService.getAllCardsInADeck(deckId);
     this.cameraService.showLoading(1500);
     this.navCtrl.setRoot(EditDeckPage);
+  }
+
+  card(length, image) {
+    if (image === "https://www.wired.com/wp-content/uploads/2015/01/learning-styles.jpg") {
+      return "0 Cards"
+    } else {
+      return length === 1 ? '1 Card' : `${length} Cards`;
+    }
   }
 
   deleteDeck(index, deckName) {

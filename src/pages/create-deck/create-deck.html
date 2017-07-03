@@ -6,9 +6,6 @@
     <ion-title>{{ 'CREATE_DECK' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content *ngIf="!!picUrl">
-  this is image my friends:{{picUrl}}
-</ion-content>
 
 <ion-content padding>
   <ion-content>
@@ -23,8 +20,8 @@
           <ion-avatar item-left>
             <img [src]="card.image" *ngIf="card.image" />
           </ion-avatar>
-          <h2 class=“card-title”>{{card.word}}</h2>
-          <p class=“card-subtitle”>{{card.translation}}</p>
+          <h2 class="card-title text">{{card.word}}</h2>
+          <p class="card-subtitle text">{{card.translation}}</p>
       </ion-item>
     </ion-card>
   </ion-list>
@@ -34,13 +31,13 @@
   <ion-grid>
     <ion-row>
       <ion-col col-4>
-        <button ion-button icon-middle color="primary"  (click)="cameraRoll()">
+        <button ion-button icon-middle color="primary"  (click)="picture('Gallery')">
           <ion-icon ios="ios-images" md="md-images" ></ion-icon>
         </button>
       </ion-col>
 
       <ion-col col-4>
-        <button ion-button icon-middle color="secondary" (click)="takePhoto()">
+        <button ion-button icon-middle color="secondary" (click)="picture('Camera')">
           <ion-icon ios="ios-camera" md="md-camera" ></ion-icon>
         </button>
       </ion-col>

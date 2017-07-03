@@ -6,7 +6,6 @@ import { Config } from '../config';
 @Injectable()
 export class CameraService {
   translationUpdate: EventEmitter<string> = new EventEmitter();
-  private serverUrl = `https://vision.googleapis.com/v1/images:annotate?key=${this.config.googleKey}`;
   public googleReq: any;
   public picUrl: any;
   public word: any;
@@ -24,9 +23,15 @@ export class CameraService {
     this.http = http;
     this.alertCtrl = alertCtrl;
     this.loadingCtrl = loadingCtrl;
-
   }
 
+  // set native and learning languages 
+  languages(source, target) {
+    this.source = source;
+    this.target = target;
+  }
+
+  // loading message
   showLoading(wait) {
     let loading = this.loadingCtrl.create({
       content: 'Please wait... Learning takes time.'
@@ -39,15 +44,11 @@ export class CameraService {
     }, wait);
   }
   
+  // send pic to cloudinary 
   sendPic(form) {
-    console.log('inside send pic')
-    console.log(form)
-    console.log(JSON.stringify(form))
-    console.log('look above')
     return this.http.post(`https://api.cloudinary.com/v1_1/${this.config.cloudinary.cloudId}/image/upload`, form)
       .map(info => {
         this.picUrl = info.json().url;
-        console.log(this.picUrl);
         return this.picUrl;
       }).toPromise()
       .then(url => {
@@ -61,6 +62,7 @@ export class CameraService {
       });
   }
 
+  // sends off cloudinary url to google object recognition
   getGoogle(imgUrl) {
     this.googleReq = {
       "requests": [{
@@ -68,22 +70,20 @@ export class CameraService {
         [{ "type": "LABEL_DETECTION", "maxResults": 5 }]
       }]
     }
-    return this.http.post(this.serverUrl, this.googleReq).map(res => res.json()).map(data => {
+    return this.http.post(`https://vision.googleapis.com/v1/images:annotate?key=${this.config.googleKey}`, this.googleReq).map(res => res.json()).map(data => {
       return data.responses[0].labelAnnotations[0].description;
     })
       .subscribe(word => {
         this.word = word
-        console.log(this.word)
         return this.googleWord(this.word, 'en');
-        // call get 
       }, err => console.log(err),
       () => {
-        this.returnWord(this.word)
+        return this.word;
       });
   }
 
+  // sends word from google object recognition to google translate
   googleWord(word, source) {
-
     let tranlationData = {
       "q": word,
       "source": source,
@@ -92,42 +92,32 @@ export class CameraService {
       .map(translate => {
         this.word = JSON.parse(translate['_body'])[this.source];
         this.wordMap = JSON.parse(translate['_body']);
-        console.log("JSON.stringify(this.wordMap)")
-        console.log(JSON.stringify(this.wordMap))
-        console.log("JSON.stringify(this.wordMap)")
-        console.log("this.word")
-        console.log(this.word)
-        console.log("this.word")
         return this.word;
       })
       .subscribe(resp => {
-        console.log('RESP', resp);
-        console.log(JSON.stringify(resp));
-        console.log('RESP');
         this.word = resp;
-        console.log('word yea yea')
-        console.log(this.word)
-        console.log('word yea yea')
         return this.word;
       })
   }
 
-  returnWord(word) {
-    return word;
+  // get translation word map 
+  getTranslation(word) {
+    this.googleWord(word, 'en')
+    this.translation = this.wordMap[this.target];
+    return this.translation;
   }
 
+  // reuturn desired word
   getWord() {
     return this.word;
   }
 
-  getTranslation(word) {
-    this.googleWord(word, 'en')
-
-    this.translation = this.wordMap[this.target];
-
+  getTranslatedWord() {
+    this.translation = this.wordMap[this.target]
     return this.translation;
   }
 
+  // title add, get and delete
   addTitle(title) {
     this.title = title;
   }
@@ -137,18 +127,9 @@ export class CameraService {
   deleteTitle() {
     this.title = null;
   }
-  getTranslatedWord() {
-    this.translation = this.wordMap[this.target]
-    return this.translation;
-  }
-  languages(source, target) {
-    this.source = source;
-    this.target = target;
-  }
+
+  // return all current card info
   getCardInfo() {
-    if (!this.title) {
-      this.title = "Default Deck Name"
-    }
     return {
       title: this.title,
       picture: this.picUrl,

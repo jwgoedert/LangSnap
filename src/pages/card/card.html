@@ -1,4 +1,3 @@
-w
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -14,8 +13,8 @@ w
   <ion-card>
     <img class="picture" [src]="cardInfo.picture" />
     <ion-card *ngIf="!!translation">
-      <h3 padding>{{ 'YOUR_WORD' | translate }}: {{ cardInfo.word }} </h3>
-      <h3>{{ 'TRANSLATION' | translate }}: {{ translation }}</h3>
+      <h3 class="text" padding>{{ 'YOUR_WORD' | translate }}: {{ cardInfo.word }} </h3>
+      <h3 class="text">{{ 'TRANSLATION' | translate }}: {{ translation }}</h3>
       {{ 'NOT_RIGHT_WORD' | translate}}
       <form (click)="tryAgain(tryAgain.title); tryAgainForm.reset()" #tryAgainForm="ngForm" padding>
         <ion-input type="text" [(ngModel)]="tryAgain.title" name="title" placeholder="{{ 'ENTER_YOUR_WORD' | translate }}"></ion-input>

@@ -40,23 +40,36 @@ export class EditDeckPage {
         translateService.use(languageService.translateLang(this.profile.nativeLang));
         this.nativeLang = this.languageService.translateLang(this.profile.nativeLang);
         this.learnLang = this.languageService.translateLang(this.profile.learnLang);
-
         this.deckService.getCurrentDeck();
-        this.deck = this.deckService.deckEditCards[0];
+        this.deck = this.deckService.currentDeck[0];
       })
       .catch(err => {
         console.log("Error" + JSON.stringify(err))
       });
     setTimeout(() => {
-      this.deckName = this.deckService.deckEditCards[0].name;
+      console.log('this.deckService.currentDeck')
+      console.log(JSON.stringify(this.deckService.currentDeck))
+      console.log('this.deckService.currentDeck')
+      this.deckName = this.deckService.currentDeck[0].name;
       this.initializeItems();
     }, 1500)
   }
 
   initializeItems() {
-    this.items = this.deckService.deckEditCards[0].cards.map(el => {
+    this.items = this.deckService.currentDeck[0].cards.map(el => {
         if (typeof el.wordMap === 'string') {
-          el.wordMap = JSON.parse(el.wordMap);
+          if (JSON.parse(el.wordMap)['sorry']) {
+            el.wordMap = {
+              "en": "No Cards",
+              "es": "No Tarjetas",
+              "fr": "Pas de cartes",
+              "de": "Keine Karten",
+              "ja": "カードなし",
+              "ru": "Нет карточек"
+            }
+          } else {
+            el.wordMap = JSON.parse(el.wordMap);
+          }
         }
         return el;
       });;
@@ -75,11 +88,11 @@ export class EditDeckPage {
   done() {
     this.navCtrl.setRoot(MyDecksPage);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditDeckPage');
-  }
 
   addCard() {
+    console.log('this.deck.id')
+    console.log(this.deck.id)
+    console.log('this.deck.id')
     this.navCtrl.setRoot(EditDeckAddPage, { deckId: this.deck.id, deckName: this.deckName });
   }
   

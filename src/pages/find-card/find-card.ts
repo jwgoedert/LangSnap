@@ -62,18 +62,14 @@ export class FindCardPage {
 
   }
 
-
   initializeItems() {
     this.chosenCards = [];
     this.items = this.deckService.allCards;
   }
   getItems(ev) {
-    // Reset items back to all of the items
     this.initializeItems();
-    // set val to the value of the ev target
     var val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
         return (item.wordMap[this.nativeLang].toLowerCase().indexOf(val.toLowerCase()) > -1);
@@ -93,11 +89,9 @@ export class FindCardPage {
       this.displayCards[pos] = -1;
     }
   }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FindAddDeckPage');
+    console.log('ionViewDidLoad FindCardsPage');
   }
-
   addCardsToCurrentDeck() {
     this.chosenCards = this.chosenCards.filter(el=> el !== -1);
     this.displayCards = this.displayCards.filter(el=> el !== -1);
@@ -109,19 +103,22 @@ export class FindCardPage {
       }
     this.displayCards.forEach(card => {
       let cardInfo = {
-        "word":  this.items[card].wordMap.en,
+        "word":  this.items[card].wordMap,
         "image": this.items[card].imgUrl
       }
+      console.log('JSON.stringify(cardInfo)')
+      console.log(JSON.stringify(cardInfo))
+      console.log('JSON.stringify(cardInfo)')
       this.deckService.addToDeckCreation(cardInfo) 
     })
  
     this.deckService.postCardsToUserDeck(addCards);
     this.chosenCards = [];
     setTimeout(() => {
-       if(this.navParams.data.findAdd === true){
-      this.navCtrl.setRoot(EditDeckAddPage);
+      if(this.navParams.data.findAdd === true){
+        this.navCtrl.setRoot(EditDeckAddPage);
       } else {
-      this.navCtrl.setRoot(CreateDeckPage);
+        this.navCtrl.setRoot(CreateDeckPage);
       }
     }, 1500)
   }

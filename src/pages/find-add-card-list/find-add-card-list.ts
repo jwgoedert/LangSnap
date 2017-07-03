@@ -36,10 +36,6 @@ export class FindAddCardListPage {
       }, 1350);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FindAddCardListPage');
-  }
-
   goHome() {
     this.navCtrl.setRoot(HomePage);
   }
