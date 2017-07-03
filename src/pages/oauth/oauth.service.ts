@@ -39,6 +39,7 @@ export class OAuthService {
 
 	isAuthorized(): boolean {
 		return !!this.getOAuthToken();
+		// return true;
 	}
 
 	getOAuthService(source?: string): IOathProvider {

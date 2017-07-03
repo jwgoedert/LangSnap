@@ -1,11 +1,63 @@
 .blue-theme {
   // h1, h2, h3, h4, h5, h6,
+
+$colors: (
+  // primary:   teal,
+  // secondary:  #32db64,
+  // danger:     #f53d3d,
+  // light:      #f4f4f4,
+  // dark:       #222,
+  // take the red pill
+  red-background: #fff6f6,
+  red-light: #ffa99c,
+  red-dark: #74000e,
+  // take the blue pillÏ
+  blue-background: #f6f6ff,
+  blue-light: #53e1ff,
+  // blue-light: rgb(246,255,235),
+  blue-dark: #0034a7,
+  
+  
+  //patriotic 2 palette
+ 
+  darkest-blue: rgb(27,50,100),
+  wonderland-skies: rgb(32,175,255),
+  amsterdam-white: rgb(246,255,235),
+  ED563c: rgb(237,86,60),
+  try-this-one-on: rgb(173,18,17),
+  primary: rgb(32,175,255),
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+);
   .toolbar-title {
-    color: #0034a7;
+    // color: #0034a7;
+    font-size: 1.7em;
+    // font-family: 'SignPainter';
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lily Script One';
+    // font-style: bold;
+    // color:#74000e; 
+    color:map-get($colors, amsterdam-white); 
+    
+    // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    // color: rgb(27,50,100);
+    // color: background: #e8fff9; /* Old browsers */
+  }
+  .bar-button{
+    color:white;
   }
   .toolbar-background {
-    background-color:  #53e1ff;
-  }
+      // background-color: rgb(246,255,235); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(bottom left, #e8fff9 0%, #baf2e9 35%, #aafffc 67%, #2dfff8 100%);
+  // background: -moz-linear-gradient(bottom left, #e8fff9 0%, #baf2e9 35%, #aafffc 67%, #2dfff8 100%);
+  // background: -o-linear-gradient(bottom left, #e8fff9 0%, #baf2e9 35%, #aafffc 67%, #2dfff8 100%);
+  // background: linear-gradient(to top right, #e8fff9 0%, #baf2e9 35%, #aafffc 67%, #2dfff8 100%); /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8fff9', endColorstr='#2dfff8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */;
+  // background-color: #FFB200;
+  background-color:map-get($colors, try-this-one-on);
+    }
   // .toolbar {
   //   height: 20px;
   // }
@@ -13,13 +65,15 @@
   //   height: 20px;
   // }
   ion-content {
-background-color: paleturquoise;
+// background-color:rgb(246,255,235);
     // background-color: #f6f6ff;
     // background-color: #53e1ff;
+    background-color: map-get($colors, amsterdam-white);
   }
   ion-list {
     .item {
-      background-color: #f6f6ff, 1.5%;
+      // background-color: #f6f6ff, 1.5%;
+      background-color: map-get($colors, amsterdam-white), 1.5%;
     }
   }
 }

@@ -35,3 +35,17 @@
 @import "./app.blue";
 
 @import "./app.red";
+
+ @font-face {
+  font-family: 'Lily Script One';
+  src: url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff'), url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  }
+  .toolbar-title {
+    font-family: 'Lily Script One';
+  }
+  *{
+    font-family: 'Lily Script One';
+  }

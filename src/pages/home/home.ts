@@ -31,6 +31,7 @@ export class HomePage {
 	public profile: any;
   public user: any;
 
+
 	constructor(oauthService: OAuthService, 
     public navCtrl: NavController, 
     public translateService: TranslateService,
@@ -43,7 +44,7 @@ export class HomePage {
       this.oauthService = oauthService;
       // if (localStorage.getItem('oauthToken') === null) {
       //   this.navCtrl.setRoot(OAuthProvidersListPage);
-      // }
+      // } 
       console.log('update 1.9')
       oauthService.getProfile().toPromise()
         .then(profile => {

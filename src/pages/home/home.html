@@ -3,7 +3,7 @@
 		 <button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>{{ 'WELCOME' | translate }}</ion-title>
+		<ion-title>{{ 'LangSnap' | translate }}</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -13,11 +13,12 @@
   <h1>{{ 'WELCOME' | translate }}</h1>
 		<h2>{{profile.firstName}} {{profile.lastName}}!!!</h2>
 			<div padding>
-				<button ion-button class="homebtn" type="button" (click)="aboutUsPage()" color="primary" block>{{ 'ABOUT_US' | translate }}</button>
-				<button ion-button class="homebtn" type="button" (click)="createPage()" color="secondary" block>{{ 'CREATE_A_DECK' | translate }}</button>
-				<button ion-button class="homebtn" type="button" (click)="findAddPage()" color="red-light"block>{{ 'FIND_ADD_A_DECK' | translate }}</button>
-				<button ion-button class="homebtn" type="button" (click)="myDecksPage()" color="blue-light"block>{{ 'MY_DECKS' | translate }}</button>
+				<button ion-button class="homebtn" type="button" (click)="aboutUsPage()" color="primary"block outline>{{ 'ABOUT_US' | translate }}</button>
+				<button ion-button class="homebtn" type="button" (click)="createPage()" color="primary"block outline>{{ 'CREATE_A_DECK' | translate }}</button>
+				<button ion-button class="homebtn" type="button" (click)="findAddPage()" color="primary"block outline>{{ 'FIND_ADD_A_DECK' | translate }}</button>
+				<button ion-button class="homebtn" type="button" (click)="myDecksPage()" color="primary"block outline>{{ 'MY_DECKS' | translate }}</button>
 			</div>
-			<button ion-button block class="button button-full" type="button" (click)="logout()" color="crimson" outline>{{ 'LOG_OUT' | translate}}</button>
+			<!--<button ion-button block class="button button-full" type="button" (click)="logout()" color="crimson" outline>{{ 'LOG_OUT' | translate}}</button>-->
+			<button ion-button class="homebtn logout" type="button" (click)="logout()" color="danger" outline>{{ 'LOG_OUT' | translate}}</button>
 	</ion-content>
 </ion-content>

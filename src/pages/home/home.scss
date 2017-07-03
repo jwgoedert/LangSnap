@@ -10,11 +10,23 @@ ion-navbar.toolbar{
   height:20px;
 }
 .homebtn{
-  padding: 1.7em;
+  margin-bottom: .5em;
+  padding: 1.5em;
+  font-family: 'Lily Script One';
+  font-size: 1.5em;
+}
+ion-title, h1 , h2{
+  font-family: 'Lily Script One';
+  color: map-get($colors, try-this-one-on);
 }
 .button-full{
   padding-top:1.4em;
   align-content: center;
+  font-family: 'Lily Script One';
   
+}
+.logout{
+  font-size: 1.2em;
+  height:20px;
 }
 }
