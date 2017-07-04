@@ -31,6 +31,7 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
 );
+$toolbar-md-title-text-color:white;
   .toolbar-title {
     // color: #0034a7;
     font-size: 1.7em;
@@ -47,6 +48,9 @@ $colors: (
   }
   .bar-button{
     color:white;
+  }
+  .ion-toolbar{
+    color: white;
   }
   .toolbar-background {
       // background-color: rgb(246,255,235); /* FF3.6-15 */
