@@ -72,7 +72,7 @@ export class EditDeckPage {
           }
         }
         return el;
-      });;
+      });
   }
   getItems(ev) {
     this.initializeItems();

@@ -30,20 +30,7 @@ export class QuizResultsPage {
       if (tempObj['color'] === 'green') { this.score += 10; }
       return tempObj;
     })
-    if (this.score >= 70) {
-     let confirm = this.alertCtrl.create({
-        title: `Congratulations! You're doing a great job! Keep up the good work.`,
-        message: 'Don\'t forget to share your progress with your friends!',
-        buttons: [
-          {
-            text: 'Close',
-            handler: () => {
-            }
-          },
-        ]
-      });
-      confirm.present();
-    }
+    this.congratulations(this.results.length);
   }
 
   facebookShare() {
@@ -63,6 +50,29 @@ export class QuizResultsPage {
     });
   }
 
+  congratulations(num) {
+    if (num === 10 && this.score >= 70 || num === 9 && this.score >= 70 || num === 8 && this.score >= 70 || num === 7 && this.score >= 70) {
+      this.message();
+    }
+    if (num === 6 && this.score >= 50 || num === 5 && this.score >= 40) {
+      this.message();
+    }
+  }
+
+  message() {
+    let confirm = this.alertCtrl.create({
+        title: `Congratulations! You're doing a great job! Keep up the good work.`,
+        message: 'Don\'t forget to share your progress with your friends!',
+        buttons: [
+          {
+            text: 'Close',
+            handler: () => {
+            }
+          },
+        ]
+      });
+    confirm.present();
+  }
   done() {
     this.navCtrl.setRoot(MyDecksPage);
   }

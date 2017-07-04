@@ -30,7 +30,20 @@ export class FindAddCardListPage {
         this.cards = this.deckService.getCurrentDeck();
         this.deckTitle = this.cards[0].name;
         this.cards = this.cards[0].cards.map(card => {
-          card.wordMap = JSON.parse(card.wordMap);
+          if (typeof card.wordMap === 'string') {
+            if (JSON.parse(card.wordMap)['sorry']) {
+              card.wordMap = {
+               "en": "No Cards",
+               "es": "No Tarjetas",
+               "fr": "Pas de cartes",
+               "de": "Keine Karten",
+               "ja": "カードなし",
+               "ru": "Нет карточек"
+              }
+            } else {
+              card.wordMap = JSON.parse(card.wordMap);
+            }                  
+          }
           return card;
         })
       }, 1350);
@@ -40,3 +53,4 @@ export class FindAddCardListPage {
     this.navCtrl.setRoot(HomePage);
   }
 }
+
