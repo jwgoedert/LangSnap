@@ -33,9 +33,9 @@ export class EditDeckAddPage {
   public translatedWord;
   public counter: number = 0;
   public deckId;
+  public nativeLang;
+  public learnLang;
   public cards: Array<object>;
-  public nativeLang: any;
-  public learnLang: any;
   constructor(
     public navParams: NavParams,
     public navCtrl: NavController,
@@ -54,17 +54,17 @@ export class EditDeckAddPage {
         this.profile = profile;
         translateService.use(languageService.translateLang(this.profile.nativeLang));
         this.cameraService.languages(this.languageService.translateLang(this.profile.nativeLang), this.languageService.translateLang(this.profile.learnLang))
-      })
+        this.nativeLang = this.languageService.translateLang(this.profile.nativeLang)
+        this.learnLang = this.languageService.translateLang(this.profile.learnLang)
+    })
       .catch(err => {
         console.log("Error" + JSON.stringify(err))
       });
     this.http = http;
-    this.nativeLang = languageService.translateLang(this.profile.nativeLang);
-    this.learnLang = languageService.translateLang(this.profile.learnLang);
     if (this.deckService.deckCreation().length > 0) {
       this.cards = this.deckService.deckCreation().reverse();
     }
-    this.title = this.navParams.data.deckName;
+    this.title = this.deckService.currentDeck[0].name;
     this.deckId = this.navParams.data.deckId;
     this.deckService.deckId = this.deckId;
   }
