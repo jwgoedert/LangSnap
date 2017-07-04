@@ -54,14 +54,16 @@ export class EditDeckAddPage {
       .then(profile => {
         this.profile = profile;
         translateService.use(languageService.translateLang(this.profile.nativeLang));
-        this.cameraService.languages(this.languageService.translateLang(this.profile.nativeLang), this.languageService.translateLang(this.profile.learnLang))
-        this.nativeLang = this.languageService.translateLang(this.profile.nativeLang)
-        this.learnLang = this.languageService.translateLang(this.profile.learnLang)
+        this.cameraService.languages(this.languageService.translateLang(this.profile.nativeLang), this.languageService.translateLang(this.profile.learnLang));
+        this.nativeLang = this.languageService.translateLang(this.profile.nativeLang);
+        this.learnLang = this.languageService.translateLang(this.profile.learnLang);
     })
       .catch(err => {
         console.log("Error" + JSON.stringify(err))
       });
     this.http = http;
+    // this.nativeLang = languageService.translateLang(this.profile.nativeLang);
+    // this.learnLang = languageService.translateLang(this.profile.learnLang);
     if (this.deckService.deckCreation().length > 0) {
       this.cards = this.deckService.deckCreation().reverse();
       let cards = this.deckService.deckCreation().map(card => {
@@ -72,7 +74,10 @@ export class EditDeckAddPage {
       }).reverse();
     }
     this.title = this.deckService.currentDeck[0].name;
-    this.deckId = this.deckService.editDeckId;
+    this.deckId = this.deckService.currentDeck[0].id;
+    // this.title = this.navParams.data.deckName;
+    // this.deckId = this.navParams.data.deckId;
+    // this.deckService.deckId = this.deckId;
   }
   ngOnInit() {
     this.photos = [];
@@ -81,7 +86,7 @@ export class EditDeckAddPage {
   findCard() {
     if (this.title) {
       console.log('Find card click success:');
-      this.navCtrl.setRoot(FindCardPage, {findAdd:true});
+      this.navCtrl.setRoot(FindCardPage, { findAdd: true });
     } else {
       let confirm = this.alertCtrl.create({
         title: `Looks like you didn't add a deck name... You're gonna have to do that first.`,
@@ -140,7 +145,7 @@ export class EditDeckAddPage {
           this.cameraService.getTranslation(this.fourN)
           this.photos[this.counter]['word'] = this.fourN;
           this.deckService.addToDeckCreation(this.photos[this.counter])
-          this.navCtrl.setRoot(CardPage, {findAdd:true})
+          this.navCtrl.setRoot(CardPage, { findAdd: true })
         }, 3000)
       })
     } else {

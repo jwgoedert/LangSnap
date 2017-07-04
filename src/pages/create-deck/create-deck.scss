@@ -1,4 +1,8 @@
 page-create-deck {
+  .deckTitle{
+    font-size:1.5em;
+    position: center;
+  }
   .block{
     position:relative;
     .deleteIcon{
@@ -12,7 +16,6 @@ page-create-deck {
     }
   }
   text-align: center;
-
   .add_title_btn{
     outline-color: teal;
   }
