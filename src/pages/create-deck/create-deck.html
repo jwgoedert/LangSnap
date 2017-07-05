@@ -10,7 +10,7 @@
 <ion-content padding>
   <ion-content>
     <form (click)="addATitle(addATitle.title); titleForm.reset()" #titleForm="ngForm" *ngIf="!title">
-      <ion-input class="deckTitle" type="text" text-center [(ngModel)]="addATitle.title" name="title" placeholder="{{ 'DECK_TITLE' | translate }}">DECK TITLE</ion-input>
+      <ion-input class="deckTitle" type="text" text-center [(ngModel)]="addATitle.title" name="title" placeholder="{{ 'DECK_TITLE' | translate }}"></ion-input>
       <button type="button" class="add_title_btn" ion-button outline >{{ 'ADD_TITLE' | translate }}</button>
     </form>
   <h3>{{ title }}</h3>

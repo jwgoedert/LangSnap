@@ -38,6 +38,9 @@ $fab-mini-size: 10px;
     width: 100%;
     color: maroon;
   }
+  .deckTitle{
+    color:map-get($colors, primary) !important;
+  }
 
 }
 

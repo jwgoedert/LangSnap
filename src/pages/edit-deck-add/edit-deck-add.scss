@@ -3,7 +3,8 @@ page-edit-deck-add {
     text-align: center;
     align-content: center;
     align-items: center;
-    color:teal;
+    font-family: 'RalewayM';
+    color:map-get($colors, primary);
   }
 
 }

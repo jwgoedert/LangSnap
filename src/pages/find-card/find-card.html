@@ -8,8 +8,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-title>{{deckTitle}}</ion-title>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <!--<ion-title class="deckTitle">{{deckTitle}}</ion-title>-->
+  <h4 text-center class="deckTitle">{{deckTitle}}</h4>
   <ion-list>
     <ion-item tappable *ngFor="let item of items; let i=index" (click)="markCard(item.id, i)">
       <ion-avatar item-start>
@@ -22,5 +23,7 @@
   </ion-list>
 </ion-content>
 <ion-footer>
-  <button ion-button full (click)="addCardsToCurrentDeck()" color="primary" outline>{{ 'ADD_CARDS' | translate }}</button>
+  <ion-toolbar>
+    <button class="tool-button" ion-button full (click)="addCardsToCurrentDeck()" color="primary" outline>{{ 'ADD_CARDS' | translate }}</button>
+  </ion-toolbar>
 </ion-footer>

@@ -13,9 +13,12 @@ page-card {
   }
 
   .text {
-    color: teal !important;
+    font-size:1.3em;
+    color:map-get($colors, primary);
   }
-
+   .textm {
+    color:map-get($colors, try-this-one-on);
+  }
   ion-card {
     position: relative;
     text-align: center;

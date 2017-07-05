@@ -16,17 +16,20 @@ body{
     font-size: 1.7em;
     width: 100%;
     font-weight: bold;
-    color: map-get($colors, amsterdam-white);
+    font-family: 'RalewayB';
+    color: map-get($colors, try-this-one-on);
     padding-left: 15px;
   padding-right: 15px;
   }
 h4 {
+  font-family: 'RalewayM';
   padding-left: 15px;
   padding-right: 15px;
+  color:map-get($colors, primary);
 }
   ion-slide{
     border-bottom-color: black;
-    background-color:map-get($colors, light);
+    background-color:map-get($colors, amsterdam-white);
     // background-image:url(http://www.iexpats.com/wp-content/uploads/2016/06/foreign-flags.jpg);
   }
   .images{
@@ -51,7 +54,7 @@ h4 {
   margin:5%;
   margin-top: none;
   justify-content:center;
-  background: -webkit-linear-gradient(bottom, skyblue, skyblue, white, white,white,  white); 
+  // background: -webkit-linear-gradient(bottom, skyblue, skyblue, white, white,white,  white); 
   border-block-start-style: none;
 }
   .description-footer{
@@ -61,7 +64,7 @@ h4 {
     font-size: 1.2em;
     width: 100%;
     font-weight: bold;
-    color: black;
+    // color: darkblue !important;
   }
   .intro{
     top:35%;
