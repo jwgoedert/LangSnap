@@ -14,7 +14,7 @@ import { CardViewerPage } from '../card-viewer/card-viewer'
 export class MyDecksPage {
   @ViewChild(Nav) nav: Nav;
 
-  public rootPage: any = MyDecksPage;
+  rootPage: any = MyDecksPage;
   public profile: any;
   public items: any;
   public deckToSend: any;
@@ -66,10 +66,14 @@ export class MyDecksPage {
 
   openDeck(deckId) {
     this.deckService.getAllCardsInADeck(deckId);
-    this.navCtrl.push(CardViewerPage)
+    this.deckService.setDeckId(deckId);
+    this.deckService.setEditDeckId(deckId);
+    this.navCtrl.push(CardViewerPage);
   }
 
   editDeck(deckId) {
+    this.deckService.setEditDeckId(deckId);
+    this.deckService.setDeckId(deckId);
     this.deckService.deckEditCards = this.deckService.getAllCardsInADeck(deckId);
     this.cameraService.showLoading(1500);
     this.navCtrl.setRoot(EditDeckPage);

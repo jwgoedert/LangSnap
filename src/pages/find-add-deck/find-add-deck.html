@@ -14,7 +14,7 @@
       <ion-item tappable class="my-decks-deck-f" (click)="openCard(item.id)">
         <img class="full-image-f" [src]="item.cards[0].imgUrl" />
         <div class="card-title">{{item.name}}</div>
-        <div class="card-subtitle">{{item.cards.length}} Cards</div>
+        <div class="card-subtitle">{{ card(item.cards.length, item.cards[0].imgUrl) }}</div>
         <div class="card-added">{{item.status}}</div>
         
       </ion-item>

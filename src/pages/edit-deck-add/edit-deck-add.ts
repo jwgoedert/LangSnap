@@ -32,10 +32,11 @@ export class EditDeckAddPage {
   public title: any;
   public translatedWord;
   public counter: number = 0;
-  public deckId;
+  public deckId: any;
+  public nativeLang;
+  public learnLang;
   public cards: Array<object>;
-  public nativeLang: any;
-  public learnLang: any;
+
   constructor(
     public navParams: NavParams,
     public navCtrl: NavController,
@@ -54,19 +55,24 @@ export class EditDeckAddPage {
         this.profile = profile;
         translateService.use(languageService.translateLang(this.profile.nativeLang));
         this.cameraService.languages(this.languageService.translateLang(this.profile.nativeLang), this.languageService.translateLang(this.profile.learnLang))
-      })
+        this.nativeLang = this.languageService.translateLang(this.profile.nativeLang)
+        this.learnLang = this.languageService.translateLang(this.profile.learnLang)
+    })
       .catch(err => {
         console.log("Error" + JSON.stringify(err))
       });
     this.http = http;
-    this.nativeLang = languageService.translateLang(this.profile.nativeLang);
-    this.learnLang = languageService.translateLang(this.profile.learnLang);
     if (this.deckService.deckCreation().length > 0) {
       this.cards = this.deckService.deckCreation().reverse();
+      let cards = this.deckService.deckCreation().map(card => {
+        // looking for wordMap if it has wordMap change it to word
+        console.log('JSON.stringify(card)')
+        console.log(JSON.stringify(card['word']))
+        console.log('JSON.stringify(card)')
+      }).reverse();
     }
-    this.title = this.navParams.data.deckName;
-    this.deckId = this.navParams.data.deckId;
-    this.deckService.deckId = this.deckId;
+    this.title = this.deckService.currentDeck[0].name;
+    this.deckId = this.deckService.editDeckId;
   }
   ngOnInit() {
     this.photos = [];

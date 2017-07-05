@@ -62,6 +62,14 @@ export class FindAddDeckPage {
     this.navCtrl.push(FindAddCardListPage, { native: this.languageService.translateLang(this.profile.nativeLang), learning: this.languageService.translateLang(this.profile.learnLang) })
   }
 
+  card(length, image) {
+    if (image === "https://www.wired.com/wp-content/uploads/2015/01/learning-styles.jpg") {
+      return "0 Cards"
+    } else {
+      return length === 1 ? '1 Card' : `${length} Cards`;
+    }
+  }
+
   goHome() {
     this.navCtrl.setRoot(HomePage)
   }

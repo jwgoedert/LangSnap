@@ -72,7 +72,7 @@ export class EditDeckPage {
           }
         }
         return el;
-      });;
+      });
   }
   getItems(ev) {
     this.initializeItems();
@@ -114,7 +114,7 @@ export class EditDeckPage {
                 this.items.splice(i, 1);
               }
             }
-            this.deckService.deleteCardFromUserDeck(this.profile.id, this.deck.id, itemId, );
+            this.deckService.deleteCardFromUserDeck(this.profile.id, this.deck.id, itemId);
             this.deckService.deckEditCards = this.deckService.getAllCardsInADeck(this.deck.id);
           }
         }

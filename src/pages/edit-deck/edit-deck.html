@@ -9,8 +9,8 @@
 
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-title>{{deckName}}</ion-title>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item-sliding tappable *ngFor="let item of items; let i=index"> 
     <ion-item >

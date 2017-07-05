@@ -19,7 +19,7 @@ export class CardPage {
   public cardInfo: any;
   public translation: any;
   public profile: any;
-  public rootPage: any = CardPage;
+  rootPage: any = CardPage;
 
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
@@ -48,6 +48,7 @@ export class CardPage {
     setTimeout(() => {
       this.translation = this.cameraService.getTranslatedWord();
       this.cardInfo.wordMap = this.cameraService.getCardInfo().wordMap;
+      this.deckService.editDeckCreation(this.cameraService.getCardInfo().wordMap);
     }, 1500)
   }
   facebookShare() {
@@ -73,7 +74,6 @@ export class CardPage {
       this.cameraService.getTranslation(this.cardInfo.word);
       word = "";
       this.getTranslation();
-      this.deckService.editDeckCreation(this.cardInfo.word);
     } else {
       let confirm = this.alertCtrl.create({
         title: `Looks like you didn't put in a new word... You should probably do that.`,

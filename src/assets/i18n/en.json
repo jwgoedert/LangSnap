@@ -46,7 +46,8 @@
   "DELETE" : "Delete",
   "EDIT": "Edit",
   "IMAGE_TEXT" : "Image to text",
-  "PLAYER": "Player" 
+  "PLAYER": "Player",
+  "ADD_CARDS": "Add Cards"
 }
 
 

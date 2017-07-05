@@ -46,7 +46,8 @@
   "DELETE" : "Effacer",
   "EDIT": "modifier",
   "IMAGE_TEXT" : "Image au texte",
-  "PLAYER": "Joueur"
+  "PLAYER": "Joueur",
+  "ADD_CARDS": "Ajouter des cartes"
 }
 
 
