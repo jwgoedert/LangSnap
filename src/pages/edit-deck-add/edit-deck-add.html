@@ -16,20 +16,10 @@
       <ion-item *ngFor="let card of cards; let id = index">
           <ion-avatar item-left>
             <img [src]="card.image" *ngIf="card.image" />
-<<<<<<< HEAD
           </ion-avatar>
-          <h2 class=“card-title”>{{card.word.wordMap[nativeLang]}}</h2>
-          <p class=“card-subtitle”>{{card.word.wordMap[learnLang]}}</p>
-=======
-          </ion-thumbnail>
-        </ion-card>
-        <ion-card>
-          <div class=“card-title”>{{card.word[nativeLang]}}</div>
-        </ion-card>
-        <ion-card>
-          <div class=“card-subtitle”>{{card.word[learnLang]}}</div>
-        </ion-card>
->>>>>>> (bugfix) Change cards to card for one card
+          <!--<h2 class=“card-title”>{{card.word[nativeLang]}}</h2>-->
+          <h2 >{{card.word[nativeLang]}}</h2>
+          <p class=“card-subtitle”>{{card.word[learnLang]}}</p>
       </ion-item>
     </ion-card>
   </ion-list>

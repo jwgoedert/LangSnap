@@ -14,6 +14,7 @@ export class DeckService {
   public cardNames: Array<any> = [];
   public creatingDeck: Array<object> = [];
   public deckEditCards: any;
+  public editDeckId: any;
 
   constructor(
     public http: Http,
@@ -46,12 +47,20 @@ export class DeckService {
     return this.deckId;
   }
 
+  setDeckId(id) {
+    this.deckId = id;
+  }
+  setEditDeckId(id) {
+    this.editDeckId = id;
+  }
+
   getCurrentDeck() {
     return this.currentDeck;
   }
 
   // posts a deck to a user 
   postUserDeck(deckName, userId) {
+    console.log('hitting post cards to user deck function')
     let reqBody = {
       "name": deckName,
       "user_id": userId,
@@ -76,6 +85,7 @@ export class DeckService {
   }
 
   postCardsToUserDeck(addCards) {
+    console.log('adding cards to a user deck')
     this.http.post(`${this.config.serverUrl}/decks/addcards`, addCards)
       .map(deck => deck)
       .subscribe(deckres => deckres),
