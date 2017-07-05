@@ -1,5 +1,6 @@
 page-create-deck {
   .deckTitle{
+    font-family: $font1;
     font-size:1.5em;
     position: center;
   }
@@ -12,18 +13,20 @@ page-create-deck {
       color:white !important;
     }
     .deleteIcon:before{
+      font-family: $font1;
       font-size: 30px !important;
     }
   }
   text-align: center;
   .add_title_btn{
-    outline-color: teal;
+    outline-color:map-get($colors,primary);
   }
   h3{
-    color: teal;
+    color:map-get($colors,primary);
   }
  .text {
-    color: teal !important;
+   font-family: $font1;
+    color: map-get($colors,primary);;
   }
   ion-card {
     position: relative;
@@ -34,6 +37,7 @@ page-create-deck {
     position: absolute;
     top: 36%;
     font-size: 2.0em;
+    font-family: $font1;
     width: 100%;
     font-weight: bold;
     color: black;
@@ -41,17 +45,20 @@ page-create-deck {
 
   .card-subtitle {
     font-size: 1.0em;
+    font-family: $font1;
     position: absolute;
     top: 52%;
     width: 100%;
-    color: black;
+    color: map-get($colors,primary);
   }
   .add_title_btn{
+    font-family: $font1;
     font-family: 'Lily Script One';
   }
   .deckTitle{
     align-content: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: $font1;
+    // font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
 }

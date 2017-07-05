@@ -1,3 +1,7 @@
+// // $font1:"Courier, Courier New, monospace";
+// $font1:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
 page-card-viewer {
   .toolbar-background {
     background: #fff;
@@ -7,7 +11,12 @@ page-card-viewer {
 font-size:1.3em;
 color:teal;
 }
-
+  .cardWord{
+    font-size:1.5em;
+    // font-family:  Courier, Courier New, monospace;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:map-get($colors, primary);
+  }
   .ion-toolbar{
     height:28px;
   }
@@ -20,15 +29,23 @@ color:teal;
   .slide-title {
     font-size: 1.2em;
     margin-top: 2.5rem;
-    color: white;
+    // font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    // font-family:  Courier, Courier New, monospace;
+    font-family: $font1;
+    font-style: bold;
+    color: map-get($colors, try-this-one-on);
   }
   .deck-language {
     font-size: 1em;
-    color: white;
+    // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:  $font1;
+    color: map-get($colors, try-this-one-on);;
   }
-
+  .viewGrid{
+    padding:0px !important;
+  }
   .slide-image {
-    height:50%;
+    height:40%;
     // max-height: 50%;
     // max-width: 60%;
     width: auto;
@@ -51,10 +68,21 @@ color:teal;
   //     color: #000000;
   //   }
 .phrase-button{
-  height: 22px;
+  background-color: map-get($colors, primary);
+  color: map-get($colors, secondary);
+  height: 35px;
+  font-size:1.2em;
+  // font-family:  Courier, Courier New, monospace;
+   font-family: $font1;
+
 }
 .quiz-button{
-  height: 22px;
+  background-color: map-get($colors, primary);
+  color: map-get($colors, secondary);
+  height: 35px;
+  font-size:1.3em;
+  // font-family:  Courier, Courier New, monospace;
+   font-family: $font1;
 }
   $navbar-ios-height: 22px;
 

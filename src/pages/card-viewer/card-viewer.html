@@ -14,7 +14,7 @@
       <h2 class="slide-title">{{ deckTitle }}</h2>
         <h4 class="deck-language">{{ deckLanguage }}</h4>
         <img [src]="card.imgUrl" class="slide-image"/>
-      <ion-card>{{ word }}</ion-card>
+      <ion-card class="cardWord">{{ word }}</ion-card>
     <ion-row>
       <ion-col col-6>
       <button ion-button small block outline (click)="sayText()"><ion-icon ios="ios-volume-up-outline" md="md-volume-up"></ion-icon></button>
@@ -23,23 +23,23 @@
       <button ion-button small block outline (click)="flip(id)">{{ 'FLIP' | translate }}</button>
       </ion-col>
     </ion-row>
-    <ion-grid>
+    <ion-grid class="viewGrid">
     <ion-row>
       <ion-col col-4>
-        <button ion-button small block icon-middle color="secondary" (click)="thumbsUp()">
+        <button ion-button small block icon-middle color="light" (click)="thumbsUp()" outline>
           <i class="fa fa-smile-o" aria-hidden="true"></i>
 
         </button>
       </ion-col>
 
       <ion-col col-4>
-        <button ion-button small block icon-middle color="default" (click)="thumbsMiddle()">
+        <button ion-button small block icon-middle color="primary" (click)="thumbsMiddle()" outline>
           <i class="fa fa-meh-o" aria-hidden="true"></i>
         </button>
       </ion-col>
 
       <ion-col col-4>
-        <button ion-button small block icon-middle color="danger" (click)="thumbsDown()">
+        <button ion-button small block icon-middle color="danger" (click)="thumbsDown()" outline>
           <i class="fa fa-frown-o" aria-hidden="true"></i>
 
         </button>
