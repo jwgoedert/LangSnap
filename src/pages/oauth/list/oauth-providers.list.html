@@ -9,9 +9,10 @@
 
 <ion-content padding>
 	<img [src]="logo"/>
-	<h4  [ngStyle]="{ 'color':teal}" padding>Login!</h4>
+	<!--<h1 text-center class="loginTitle" color="try-this-one-on">LangSnap</h1>-->
+	<h4  text-center [ngStyle]="{ 'color':teal}" padding>Login!</h4>
 	<ion-list inset>
-		<ion-item (click)="login('facebook')">
+		<ion-item class="facebook" (click)="login('facebook')">
 			<ion-icon name="logo-facebook" item-left></ion-icon>
 			Facebook
 		</ion-item>

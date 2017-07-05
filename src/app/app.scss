@@ -43,6 +43,34 @@
   font-style: normal;
   line-height: normal;
   }
+  @font-face {
+  font-family: 'RalewayM';
+  src: url('../assets/fonts/Raleway-Medium.woff') format('woff'), url('../assets/fonts/Raleway-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  }
+  @font-face {
+  font-family: 'RalewayB';
+  src: url('../assets/fonts/Raleway-Bold.woff') format('woff'), url('../assets/fonts/Raleway-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  }
+    @font-face {
+  font-family: 'RobotoB';
+  src: url('../assets/fonts/RobotoSlab-Bold.woff') format('woff'), url('../assets/fonts/RobotoSlab-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  } 
+   @font-face {
+  font-family: 'RobotoR';
+  src: url('../assets/fonts/RobotoSlab-Regular.woff') format('woff'), url('../assets/fonts/RRobotoSlab-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  }
   .toolbar-title .add_title_btn .ion-button{
     font-family: 'Lily Script One';
   }
@@ -58,5 +86,13 @@
   //   font-family: 'Lily Script One';
   // }
   .menuItems{
+    font-family: 'RalewayM';
+    color:map-get($colors, primary);
+  }
+  .loginTitle{
+    font-size: 3.7em;
     font-family: 'Lily Script One';
+  }
+  .facebook{
+    align-content: center;
   }

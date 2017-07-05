@@ -16,24 +16,29 @@ page-my-decks {
   width: 100%;
   font-weight: bold;
   // color: skyblue;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva,' 'Verdana', sans-serif !important;
+  // font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva,' 'Verdana', sans-serif !important;
+  font-family: 'RalewayM' !important;
   color: maroon;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color:skyblue;
+  // color:map-get($colors, try-this-one-on);
+  // -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color:map-get($colors, try-this-one-on);
   }
 .card-subtitle {
   font-size: 1.3em;
   position: absolute;
-  top: 50%;
-  left: 15%;
+  top: 35%;
+  left: 17%;
   width: 100%;
-  color:lightblue;  
-  -webkit-text-stroke-width: .5px;
-  -webkit-text-stroke-color:maroon;
+  color:map-get($colors, primary);
+  font-family: 'RalewayB';
+  // -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color:map-get($colors, primary);
 }
   .full-image{
     width: 100%;
     height: 100%;
+    background: linear-gradient(bottom, white, white);
+    opacity:.6;
 
   }
 .my-card .item.item-image{

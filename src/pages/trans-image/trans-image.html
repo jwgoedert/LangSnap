@@ -44,15 +44,15 @@
         </ion-col>
 
         <ion-col col-6>
-          <button ion-button icon-middle outlines small block (click)="takePhoto()">
+          <button ion-button icon-middle outline small block (click)="takePhoto()">
           <ion-icon ios="ios-camera" md="md-camera" ></ion-icon>
         </button>
         </ion-col>
       </ion-row>
     </ion-grid>
     <ion-toolbar>
-      <button ion-button block outline (click)="goHome()">
-    <ion-icon name="home">
+      <button class="tool-button"ion-button small block (click)="goHome()">
+    <ion-icon>
     </ion-icon>{{ 'HOME' | translate }}
   </button>
     </ion-toolbar>
