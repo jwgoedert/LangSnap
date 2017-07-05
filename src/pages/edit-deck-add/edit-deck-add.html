@@ -16,8 +16,8 @@
           <ion-avatar item-left>
             <img [src]="card.image" *ngIf="card.image" />
           </ion-avatar>
-          <h2 class=“card-title”>{{card.word[nativeLang]}}</h2>
-          <!--<h2 >{{card.word[nativeLang]}}</h2>-->
+          <!--<h2 class=“card-title”>{{card.word[nativeLang]}}</h2>-->
+          <h2 >{{card.word[nativeLang]}}</h2>
           <p class=“card-subtitle”>{{card.word[learnLang]}}</p>
       </ion-item>
     </ion-card>
@@ -45,16 +45,9 @@
         </button>
         </ion-col>
 
-<<<<<<< HEAD
-    </ion-row>
-  </ion-grid>
-  <button ion-button full (click)="createDeck()" outline>{{ 'ADD_CARDS' | translate }}</button>
-</ion-footer>
-=======
       </ion-row>
     </ion-grid>
     <ion-toolbar>
-      <button class="tool-button" ion-button small block (click)="createDeck()">{{ 'ADD_CARD' | translate }}</button>
+      <button class="tool-button" ion-button small block (click)="createDeck()">{{ 'ADD_CARDS' | translate }}</button>
     </ion-toolbar>
   </ion-footer>
->>>>>>> (maint)Add toolbars to bottom of pages
