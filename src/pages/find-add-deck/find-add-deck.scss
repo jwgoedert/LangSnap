@@ -49,6 +49,22 @@ background-color: teal;
     align-items: center;
     border-bottom-color: turquoise;
   }
+  .HomeButton{
+  background-color: map-get($colors, primary);
+  color: map-get($colors, secondary);
+  height: 35px;
+  font-size:1.3em;
+  // font-family:  Courier, Courier New, monospace;
+   font-family: $font1;
+}
+.AddButton{
+  background-color: map-get($colors, primary);
+  color: map-get($colors, secondary);
+  height: 35px;
+  font-size:1.3em;
+  // font-family:  Courier, Courier New, monospace;
+   font-family: $font1;
+}
 
   .full-image-f{
     width: 100%;
