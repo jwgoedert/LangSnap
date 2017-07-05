@@ -1,5 +1,16 @@
 page-phrase-modal {
 .sentence{
-  color:gold;
+color:map-get($colors, try-this-one-on);
+
+}
+.phraseTitle{
+  font:$font1;
+  background-color: map-get($colors, try-this-one-on);
+  color:map-get($colors, amsterdam-white);
+  font-family: 'Lily Script One';
+  font-size: 1.7em;
+}
+.smallText{
+  font-size: 1.2em;
 }
 }

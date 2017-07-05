@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar class="phraseTitle" color="amsterdam-white">
+    <ion-title class="phraseTitle" color="amsterdam-white !important">
      {{ 'PHRASE' | translate }}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">{{ 'CANCEL' | translate }}</span>
-        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+        <span  ion-text color="amsterdam-white" showWhen="ios">{{ 'CANCEL' | translate }}</span>
+        <ion-icon name="md-close" color="amsterdam-white" showWhen="android, windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -16,11 +16,11 @@
 <ion-content padding>
   <ion-content *ngIf="!!phrase"> 
     <h2 class="sentence">{{ 'TRANSLATION' | translate }}</h2>
-    <div class="sentence">
+    <div class="sentence smallText">
       {{ phrase }}
     </div>
     <h2 class="sentence">{{ 'NATIVE_LANGUAGE' | translate }}</h2>
-    <div class="sentence">
+    <div class="sentence smallText">
       {{ sentence }}
     </div>
   </ion-content>

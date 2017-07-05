@@ -50,5 +50,12 @@
   //   font-family: 'Lily Script One';
   // }
   .menuItems{
-    font-family: 'Lily Script One';
+    font-family: $font1;
+  }
+  .toolButton{
+  background-color: map-get($colors, primary);
+  color: map-get($colors, secondary);
+  height: 35px;
+  font-size:1.3em;
+  font-family: $font1;
   }

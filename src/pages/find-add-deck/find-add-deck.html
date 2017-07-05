@@ -16,7 +16,7 @@
         <div class="card-title">{{item.name}}</div>
         <div class="card-subtitle">{{ card(item.cards.length, item.cards[0].imgUrl) }}</div>
         <div class="card-added">{{item.status}}</div>
-        
+
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary" (click)="openCard(item.id)">
@@ -32,20 +32,22 @@
   </ion-list>
 </ion-content>
 <ion-footer>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-6>
-        <button ion-button block outline (click)="goHome()">
-          <ion-icon name="home">
+  <ion-toobar>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button class="toolButton" ion-button small block (click)="goHome()">
+          <!--<ion-icon name="home">-->
           </ion-icon>{{ 'HOME' | translate }}
         </button>
-      </ion-col>
+        </ion-col>
 
-      <ion-col col-6>
-        <button ion-button block icon-middle outline (click)="addDecks()">
+        <ion-col col-6>
+          <button class="toolButton" ion-button small block icon-middle (click)="addDecks()">
           {{ 'ADD_DECK' | translate }}
         </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  </ion-footer>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toobar>
+</ion-footer>
