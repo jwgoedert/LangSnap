@@ -9,49 +9,51 @@
 
 <ion-content padding>
   <ion-content>
-  <!--<ion-list >-->
+    <!--<ion-list >-->
     <!--<ion-card *ngIf="!!fourN">-->
     <div *ngIf="!!fourN">
       <!--<ion-item>-->
+      <!--<ion-card>-->
+      <ion-thumbnail item-left>
+        <img [src]="photo" *ngIf="photo" />
+      </ion-thumbnail>
+      <!--</ion-card>-->
+      <div>
         <!--<ion-card>-->
-          <ion-thumbnail item-left>
-            <img [src]="photo" *ngIf="photo" />
-          </ion-thumbnail>
+        <div class="card-subtitle">{{native}}</div>
         <!--</ion-card>-->
-        <div>
+      </div>
+      <div>
         <!--<ion-card>-->
-          <div class="card-subtitle">{{native}}</div>
+        <div class=“card-subtitle”>{{fourN}}</div>
         <!--</ion-card>-->
-        </div>
-        <div>
-        <!--<ion-card>-->
-          <div class=“card-subtitle”>{{fourN}}</div>
-        <!--</ion-card>-->
-        </div>
+      </div>
       <!--</ion-item>-->
     </div>
     <!--</ion-card>-->
-  <!--</ion-list>-->
-</ion-content>
+    <!--</ion-list>-->
+  </ion-content>
 
-<ion-footer>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-6>
-        <button ion-button icon-middle outline block (click)="cameraRoll()">
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button icon-middle outline small block (click)="cameraRoll()">
           <ion-icon ios="ios-images" md="md-images" ></ion-icon>
         </button>
-      </ion-col>
+        </ion-col>
 
-      <ion-col col-6>
-        <button ion-button icon-middle outline block (click)="takePhoto()">
+        <ion-col col-6>
+          <button ion-button icon-middle outlines small block (click)="takePhoto()">
           <ion-icon ios="ios-camera" md="md-camera" ></ion-icon>
         </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <button ion-button block outline (click)="goHome()">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-toolbar>
+      <button ion-button block outline (click)="goHome()">
     <ion-icon name="home">
     </ion-icon>{{ 'HOME' | translate }}
   </button>
-</ion-footer>
+    </ion-toolbar>
+  </ion-footer>

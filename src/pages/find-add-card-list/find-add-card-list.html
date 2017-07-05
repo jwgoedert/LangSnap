@@ -20,6 +20,7 @@
 </ion-content>
 
 <ion-footer>
-  <button ion-button full (click)="goHome()" outline>{{ 'HOME' | translate }}</button>
+  <ion-toolbar>
+    <button class="tool-button" ion-button small block (click)="goHome()" >{{ 'HOME' | translate }}</button>
+  </ion-toolbar>
 </ion-footer>
-

@@ -31,5 +31,7 @@
       </form>
     </ion-card>
   </ion-card>
-  <button ion-button full (click)="createCard()" outline>{{ 'CREATE_CARD' | translate }}</button>
+  <ion-toolbar>
+    <button class="tool-button" ion-button full (click)="createCard()" outline>{{ 'CREATE_CARD' | translate }}</button>
+  </ion-toolbar>
 </ion-content>
